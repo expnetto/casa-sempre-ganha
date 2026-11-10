@@ -5,8 +5,8 @@
     <meta http-equiv="content-language" content="pt-br">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Eraldo Xavier Pimentel Netto">
-    <meta name="keywords" content="plano de limites, autoexclusão, CVV, CAPS, ajuda, jogo compulsivo">
-    <meta name="description" content="Plano de limites para apostas salvo no navegador e canais gratuitos de apoio, como o CVV e os CAPS.">
+    <meta name="keywords" content="extrato, autoteste, PGSI, autoexclusão, CVV, CAPS, ajuda, jogo compulsivo">
+    <meta name="description" content="O extrato de tudo o que você jogou no site, um autoteste sobre apostas e canais gratuitos de apoio, como o CVV e os CAPS.">
     <meta name="theme-color" content="#0f2b24">
     <title>E agora | A casa sempre ganha</title>
     <link rel="icon" type="image/png" href="../img/icone.png">
@@ -34,7 +34,7 @@
       <li><span class="menu-capitulo">Por que prende</span><ul><li><a href="mecanismos.html">Os três mecanismos</a></li><li><a href="mecanismo-quase-ganhou.html">O quase ganhou</a></li><li><a href="mecanismo-reforco-variavel.html">Reforço variável</a></li><li><a href="mecanismo-ilusao-controle.html">Ilusão de controle</a></li></ul></li>
       <li><span class="menu-capitulo">Experimente</span><ul><li><a href="simulador.html">Simulador de roleta</a></li></ul></li>
       <li><span class="menu-capitulo">Quanto custa</span><ul><li><a href="numeros.html">Calculadora de gasto</a></li></ul></li>
-      <li><span class="menu-capitulo">E agora</span><ul><li><a href="ajuda.html" aria-current="page">Plano de limites e apoio</a></li></ul></li>
+      <li><span class="menu-capitulo">E agora</span><ul><li><a href="ajuda.html" aria-current="page">Seu extrato e apoio</a></li></ul></li>
       </ol>
       <p class="menu-consulta">Consulta</p>
       <ul><li><a href="glossario.html">Glossário</a></li><li><a href="fontes.html">Fontes</a></li><li><a href="sobre.html">Sobre o projeto</a></li></ul>
@@ -53,118 +53,78 @@
 
       <header class="abertura-pagina">
         <h1>E agora</h1>
-        <p class="chamada">Aqui o cassino desliga: sem luzes, sem fichas, sem letreiro piscando. Entender o mecanismo não basta para sair dele. O que ajuda é decidir antes, com calma, quanto você aceita perder, e ter alguém para chamar quando esse limite não segurar.</p>
+        <p class="chamada">Aqui o cassino desliga: sem luzes, sem fichas, sem letreiro piscando. Hora de olhar a conta do que você fez neste site e decidir o próximo passo.</p>
       </header>
 
       <aside class="aviso" aria-label="Aviso importante">
         <p><strong>Este site não faz diagnóstico nem substitui atendimento.</strong> Se apostar está causando sofrimento, dívida ou briga em casa, procure um dos canais de apoio no fim desta página.</p>
       </aside>
 
-      <section class="painel-plano resultado" id="painel-plano" hidden aria-live="polite">
-        <p id="plano-saudacao">Este é o seu plano.</p>
-        <h2 class="numero-grande" id="plano-dia">Dia 1 de 30</h2>
-        <p>
-          <label for="barra-dias" id="plano-frase-dias">Faltam 29 dias para fechar este período.</label><br>
-          <progress id="barra-dias" max="30" value="1"></progress>
-        </p>
-        <p>
-          <label for="barra-gasto">Já registrado: <strong id="plano-gasto">R$ 0,00 de R$ 0,00</strong></label><br>
-          <progress id="barra-gasto" max="100" value="0"></progress>
-        </p>
-        <p id="plano-situacao"></p>
-        <p class="texto-suave" id="plano-anotacao"></p>
+      <section aria-labelledby="titulo-extrato">
+        <h2 id="titulo-extrato">O seu extrato</h2>
+        <p>Tudo o que você jogou neste site, com dinheiro de mentira, somado num só comprovante. Os valores ficam guardados só neste navegador.</p>
 
-        <form id="form-registro" class="registro" novalidate>
-          <div class="campo">
-            <label for="valor-registro">Registrar uma aposta (R$)</label>
-            <input type="number" id="valor-registro" name="valor-registro" min="0.01" step="0.01" required placeholder="Ex.: 20">
+        <article class="comprovante" id="comprovante" aria-live="polite">
+          <header class="comprovante-topo">
+            <p class="comprovante-casa">A casa sempre ganha</p>
+            <p class="comprovante-sub">Comprovante de jogo</p>
+            <p class="comprovante-data" id="comprovante-data"></p>
+          </header>
+          <div id="comprovante-corpo">
+            <p>Você ainda não jogou nada aqui. Gire a roleta da <a href="../index.html">abertura</a>, jogue no <a href="simulador.html">simulador</a> ou no <a href="mecanismo-reforco-variavel.html">multiplicador</a> e volte para ver a conta.</p>
           </div>
-          <button class="botao" type="submit">Registrar</button>
-        </form>
-        <p class="erro-campo" id="erro-registro" role="alert"></p>
+          <footer class="comprovante-rodape">
+            <p id="comprovante-reflexao" hidden></p>
+            <p>Obrigado pela preferência. Volte sempre.</p>
+          </footer>
+        </article>
 
         <div class="acoes">
-          <button class="botao" type="button" id="novo-periodo" hidden>Começar novo período</button>
-          <button class="botao botao-secundario" type="button" id="apagar-plano">Apagar plano</button>
+          <button class="botao botao-secundario" type="button" id="zerar-extrato">Zerar o extrato</button>
         </div>
       </section>
 
-      <section aria-labelledby="titulo-plano">
-        <h2 id="titulo-plano">Plano de limites</h2>
-        <p>O plano fica salvo só neste navegador. Quando você voltar a esta página, ele mostra em que dia do período você está e quanto já usou do teto.</p>
-
-        <form id="form-limites" novalidate>
-          <input type="hidden" name="versao-plano" value="1">
-
-          <fieldset>
-            <legend>O limite</legend>
-            <div class="campo">
-              <label for="nome">Como quer ser chamado</label>
-              <input type="text" id="nome" name="nome" maxlength="40" placeholder="Opcional" autocomplete="nickname">
-            </div>
-            <div class="campos-lado">
-              <div class="campo">
-                <label for="teto">Teto para apostas no período (R$)</label>
-                <input type="number" id="teto" name="teto" min="1" max="1000000" step="0.01" required placeholder="Ex.: 100">
-              </div>
-              <div class="campo">
-                <label for="periodo">Período</label>
-                <select id="periodo" name="periodo" required>
-                  <optgroup label="Curto prazo">
-                    <option value="7">Semanal (7 dias)</option>
-                    <option value="15">Quinzenal (15 dias)</option>
-                  </optgroup>
-                  <optgroup label="Prazo maior">
-                    <option value="30" selected>Mensal (30 dias)</option>
-                    <option value="90">Trimestral (90 dias)</option>
-                  </optgroup>
-                </select>
-              </div>
-            </div>
-            <div class="campo">
-              <label for="inicio">Começa em</label>
-              <input type="date" id="inicio" name="inicio" required>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Os freios</legend>
-            <div class="campo">
-              <label for="palavra">Palavra de trava</label>
-              <input type="password" id="palavra" name="palavra" minlength="4" autocomplete="new-password" placeholder="Opcional, pelo menos 4 letras">
-              <small>Se você criar uma, o teto só pode ser aumentado digitando ela de novo. É um freio contra decisões no impulso, não uma senha de segurança: fica guardada só neste navegador.</small>
-            </div>
-            <div class="campo">
-              <label for="email-confianca">E-mail de alguém de confiança</label>
-              <input type="email" id="email-confianca" name="email-confianca" autocomplete="off" placeholder="Opcional, ex.: nome@exemplo.com">
-              <small>Nada é enviado. É só um lembrete de quem você pode avisar se passar do limite.</small>
-            </div>
-            <div class="campo">
-              <label for="anotacao">Por que você quer esse limite</label>
-              <textarea id="anotacao" name="anotacao" maxlength="600" placeholder="Ex.: quero pagar a dívida do cartão até março."></textarea>
-              <small>Esse texto aparece no topo do plano toda vez que você voltar.</small>
-            </div>
-            <p>
-              <input type="checkbox" id="autoexclusao" name="autoexclusao">
-              <label for="autoexclusao">Já pedi a autoexclusão das bets na plataforma do governo</label>
-            </p>
-          </fieldset>
-
-          <fieldset>
-            <legend>A cor do seu plano</legend>
-            <div class="campo">
-              <label for="cor-destaque">Escolha a cor de destaque</label>
-              <input type="color" id="cor-destaque" name="cor-destaque" value="#e0a93b">
-              <small>A cor muda na hora nesta página e fica salva para quando você voltar.</small>
-            </div>
-          </fieldset>
-
-          <p class="erro-campo" id="erro-limites" role="alert"></p>
+      <section aria-labelledby="titulo-reflexao">
+        <h2 id="titulo-reflexao">O que você faria com esse dinheiro?</h2>
+        <form id="form-reflexao" novalidate>
+          <div class="campo">
+            <label for="reflexao">Pense no dinheiro que já saiu da sua conta para apostas, de verdade. O que você faria com ele?</label>
+            <textarea id="reflexao" name="reflexao" maxlength="300" required placeholder="Ex.: quitava o cartão e fazia aquela viagem com a minha mãe."></textarea>
+            <small>A sua resposta é impressa no comprovante acima e fica só neste navegador.</small>
+          </div>
+          <p class="erro-campo" id="erro-reflexao" role="alert"></p>
           <div class="acoes">
-            <input class="botao" type="submit" value="Salvar plano">
-            <input class="botao botao-secundario" type="reset" value="Limpar campos">
+            <button class="botao" type="submit">Imprimir no comprovante</button>
           </div>
         </form>
+      </section>
+
+      <hr>
+
+      <section aria-labelledby="titulo-teste">
+        <h2 id="titulo-teste">Autoteste: as apostas estão sob controle?</h2>
+        <p>As nove perguntas abaixo são uma adaptação do <abbr title="Problem Gambling Severity Index">PGSI</abbr>, o Índice de Gravidade do Jogo Problemático, um dos questionários de triagem mais usados no mundo. Pense nos <strong>últimos 12 meses</strong>. As respostas não são salvas nem enviadas.</p>
+
+        <form id="form-teste" novalidate>
+          <p>
+            <label for="progresso-teste">Respondidas: <span id="contagem-teste">0 de 9</span></label><br>
+            <progress id="progresso-teste" max="9" value="0">0 de 9</progress>
+          </p>
+          <ol class="perguntas" id="perguntas"></ol>
+          <p class="erro-campo" id="erro-teste" role="alert"></p>
+          <div class="acoes">
+            <button class="botao" type="submit">Ver o resultado</button>
+            <button class="botao botao-secundario" type="reset">Recomeçar</button>
+          </div>
+        </form>
+
+        <section class="resultado" id="resultado-teste" hidden aria-live="polite">
+          <p class="texto-suave">Sua pontuação</p>
+          <span class="numero-grande" id="pontos-teste">0</span>
+          <h3 id="faixa-teste"></h3>
+          <p id="texto-teste"></p>
+          <p class="fonte-dado">Faixas do PGSI: 0 ponto, sem problema; 1 a 2, baixo risco; 3 a 7, risco moderado; 8 ou mais, jogo problemático. Fonte: Ferris e Wynne, 2001.</p>
+        </section>
       </section>
 
       <hr>
@@ -206,7 +166,7 @@
     <script src="../js/estado.js"></script>
     <script src="../js/nav.js"></script>
     <script src="../js/efeitos.js"></script>
-    <script src="../js/limites.js"></script>
+    <script src="../js/extrato.js"></script>
     <script src="../js/cenas.js"></script>
   </body>
 </html>

@@ -34,7 +34,7 @@
       <li><span class="menu-capitulo">Por que prende</span><ul><li><a href="mecanismos.html">Os três mecanismos</a></li><li><a href="mecanismo-quase-ganhou.html">O quase ganhou</a></li><li><a href="mecanismo-reforco-variavel.html">Reforço variável</a></li><li><a href="mecanismo-ilusao-controle.html">Ilusão de controle</a></li></ul></li>
       <li><span class="menu-capitulo">Experimente</span><ul><li><a href="simulador.html">Simulador de roleta</a></li></ul></li>
       <li><span class="menu-capitulo">Quanto custa</span><ul><li><a href="numeros.html">Calculadora de gasto</a></li></ul></li>
-      <li><span class="menu-capitulo">E agora</span><ul><li><a href="ajuda.html">Plano de limites e apoio</a></li></ul></li>
+      <li><span class="menu-capitulo">E agora</span><ul><li><a href="ajuda.html">Seu extrato e apoio</a></li></ul></li>
       </ol>
       <p class="menu-consulta">Consulta</p>
       <ul><li><a href="glossario.html">Glossário</a></li><li><a href="fontes.html">Fontes</a></li><li><a href="sobre.html" aria-current="page">Sobre o projeto</a></li></ul>
@@ -60,7 +60,7 @@
         <h2 id="titulo-ideia">A ideia</h2>
         <p><strong>O problema:</strong> as apostas online cresceram muito rápido no Brasil, e o material de conscientização costuma ser técnico demais ou só dizer “não aposte”. Quem já aposta não se convence com isso.</p>
         <p><strong>Para quem é:</strong> jovens e adultos que apostam ou conhecem alguém que aposta.</p>
-        <p><strong>A proposta:</strong> em vez de sermão, deixar a pessoa ver o mecanismo funcionando numa roleta de mentira, fazer a conta com os próprios números e sair com um plano de limites salvo no navegador.</p>
+        <p><strong>A proposta:</strong> em vez de sermão, deixar a pessoa ver o mecanismo funcionando numa roleta de mentira, fazer a conta com os próprios números e terminar com um extrato de tudo o que jogou, mais um autoteste.</p>
         <p><strong>A linguagem visual:</strong> cada página é um jogo diferente das bets brasileiras, com cores, tipografia, fundo animado e até o cursor do mouse próprios: lobby de cassino, pôquer, caça-níquel, multiplicador, apostas esportivas, roleta, loteria, bingo, dados e os bastidores. A única página sem nada disso é a de ajuda, onde o cassino desliga de propósito.</p>
       </section>
 
@@ -81,7 +81,7 @@
         <p>A base do site é HTML, CSS e JavaScript escritos à mão. Por cima dela, duas bibliotecas, o GSAP (com três plugins) e o Lenis, carregadas por <abbr title="Content Delivery Network, rede de distribuição de conteúdo">CDN</abbr>:</p>
         <ul>
           <li><strong>GSAP</strong>: anima propriedades ao longo do tempo, como posição, rotação e opacidade. Faz as cortinas, o preloader, as fichas caindo e os botões que puxam o mouse.</li>
-          <li><strong>ScrollTrigger</strong>, plugin do GSAP: transforma a posição da rolagem num número de 0 a 1 e usa esse número para avançar uma animação. Faz a caça-níquel, a faixa da roleta, as cartas correndo de lado e as linhas de saldo.</li>
+          <li><strong>ScrollTrigger</strong>, plugin do GSAP: transforma a posição da rolagem num número de 0 a 1 e usa esse número para avançar uma animação. Faz as cartas correndo de lado e as linhas de saldo que se desenham.</li>
           <li><strong>SplitText</strong>, plugin do GSAP: separa um título em linhas ou palavras, para cada uma entrar separadamente.</li>
           <li><strong>DrawSVG</strong>, plugin do GSAP, só na página de apostas esportivas: desenha as linhas do gráfico de saldo como se fossem traçadas à mão.</li>
           <li><strong>Lenis</strong>: deixa a rolagem do mouse suave, como em aplicativo.</li>
@@ -109,7 +109,7 @@
               </tr>
               <tr>
                 <th scope="row"><a href="../index.html">Início</a></th>
-                <td>h1, figure, figcaption, img, ul, button</td>
+                <td>h1, figure, figcaption, img, ul, button; cadastro com input text, email, password, date, checkbox e details com os termos</td>
                 <td>Lobby: roleta gigante girando, holofotes, lâmpadas e fichas que seguem o mouse</td>
               </tr>
               <tr>
@@ -119,8 +119,8 @@
               </tr>
               <tr>
                 <th scope="row"><a href="mecanismo-quase-ganhou.html">O quase ganhou</a></th>
-                <td>audio, source, details, summary, em, strong</td>
-                <td>Caça-níquel: duas cenas presas à rolagem e o texto revelado palavra por palavra</td>
+                <td>audio, source, details, summary, em, strong, checkbox do som</td>
+                <td>Caça-níquel jogável, programada para mostrar quases com mais frequência que o acaso, com o som sincronizado ao último rolo</td>
               </tr>
               <tr>
                 <th scope="row"><a href="mecanismo-reforco-variavel.html">Reforço variável</a></th>
@@ -134,18 +134,18 @@
               </tr>
               <tr>
                 <th scope="row"><a href="simulador.html">Simulador</a></th>
-                <td>form, fieldset, legend, label, input range, number, radio, checkbox, hidden, submit, reset, button, datalist, table, progress</td>
+                <td>form, fieldset, legend, label, input range, number, radio, checkbox, hidden, color, submit, reset, button, datalist, table, progress</td>
                 <td>Roleta: Math.random, laço de rodadas, tabela montada pelo JavaScript e lâmpadas que apagam com o saldo</td>
               </tr>
               <tr>
                 <th scope="row"><a href="numeros.html">Quanto custa</a></th>
-                <td>table com rowspan e colspan, abbr, sup, sub, meter, iframe, required, placeholder, min, max</td>
+                <td>table com rowspan e colspan, abbr, sup, sub, meter, iframe, input date, select com optgroup, required, placeholder, min, max</td>
                 <td>Loteria: contadores em bolas e o total revelado numa raspadinha em canvas</td>
               </tr>
               <tr>
                 <th scope="row"><a href="ajuda.html">E agora</a></th>
-                <td>input text, password, email, date, color, select, optgroup, textarea, progress, link tel:</td>
-                <td>Fora do jogo: página clara, sem efeitos, plano de limites salvo no localStorage</td>
+                <td>table do comprovante com tfoot, textarea, fieldset e radio do autoteste, progress, link tel:</td>
+                <td>Fora do jogo: página clara e sem efeitos; o extrato soma o que foi jogado nas outras páginas, e o autoteste é montado pelo JavaScript</td>
               </tr>
               <tr>
                 <th scope="row"><a href="glossario.html">Glossário</a></th>
@@ -178,7 +178,7 @@
         </details>
         <details>
           <summary>Como os dados ficam salvos</summary>
-          <p>O saldo do simulador, o plano de limites e a cor escolhida ficam numa única chave do localStorage, chamada <b>csg</b>. Toda leitura e escrita passa pelo arquivo <b>js/estado.js</b>, que trata o caso de o navegador bloquear o salvamento, como no modo privado.</p>
+          <p>Os resultados dos jogos, o total da calculadora, a resposta para o extrato e a cor da ficha ficam numa única chave do localStorage, chamada <b>csg</b>. Toda leitura e escrita passa pelo arquivo <b>js/estado.js</b>, que trata o caso de o navegador bloquear o salvamento, como no modo privado.</p>
         </details>
         <details>
           <summary>Como a roleta funciona</summary>

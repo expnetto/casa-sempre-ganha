@@ -33,10 +33,6 @@
   } catch (erro) {}
 
   const estado = Estado.ler();
-  if (estado.cor && document.body.dataset.tema === "fora") {
-    document.body.style.setProperty("--destaque", estado.cor);
-    document.body.style.setProperty("--destaque-fundo", estado.cor + "24");
-  }
 
   const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const tempoSaida = reduzir ? 120 : 180;

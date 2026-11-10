@@ -34,7 +34,7 @@
       <li><span class="menu-capitulo">Por que prende</span><ul><li><a href="mecanismos.html">Os três mecanismos</a></li><li><a href="mecanismo-quase-ganhou.html">O quase ganhou</a></li><li><a href="mecanismo-reforco-variavel.html">Reforço variável</a></li><li><a href="mecanismo-ilusao-controle.html">Ilusão de controle</a></li></ul></li>
       <li><span class="menu-capitulo">Experimente</span><ul><li><a href="simulador.html">Simulador de roleta</a></li></ul></li>
       <li><span class="menu-capitulo">Quanto custa</span><ul><li><a href="numeros.html" aria-current="page">Calculadora de gasto</a></li></ul></li>
-      <li><span class="menu-capitulo">E agora</span><ul><li><a href="ajuda.html">Plano de limites e apoio</a></li></ul></li>
+      <li><span class="menu-capitulo">E agora</span><ul><li><a href="ajuda.html">Seu extrato e apoio</a></li></ul></li>
       </ol>
       <p class="menu-consulta">Consulta</p>
       <ul><li><a href="glossario.html">Glossário</a></li><li><a href="fontes.html">Fontes</a></li><li><a href="sobre.html">Sobre o projeto</a></li></ul>
@@ -126,9 +126,25 @@
                 <input type="number" id="gasto-semanal" name="gasto-semanal" min="1" max="100000" step="0.01" required placeholder="Ex.: 50">
               </div>
               <div class="campo">
-                <label for="meses">Há quantos meses</label>
-                <input type="number" id="meses" name="meses" min="1" max="600" step="1" required placeholder="Ex.: 18">
+                <label for="desde">Desde quando você aposta</label>
+                <input type="date" id="desde" name="desde" required>
+                <small>Se não lembrar o dia, escolha o primeiro dia do mês.</small>
               </div>
+            </div>
+            <div class="campo">
+              <label for="jogo">Em que você mais aposta</label>
+              <select id="jogo" name="jogo">
+                <option value="">Prefiro não dizer</option>
+                <optgroup label="Apostas esportivas">
+                  <option value="futebol">Futebol, antes do jogo</option>
+                  <option value="ao_vivo">Apostas ao vivo, durante o jogo</option>
+                </optgroup>
+                <optgroup label="Cassino online">
+                  <option value="roleta">Roleta</option>
+                  <option value="caca_niquel">Caça-níquel</option>
+                  <option value="multiplicador">Jogos de multiplicador</option>
+                </optgroup>
+              </select>
             </div>
           </fieldset>
 
@@ -160,6 +176,7 @@
             <span class="numero-grande negativo" id="total-gasto">R$ 0,00</span>
           </div>
           <p>Isso dá <strong id="por-mes">R$ 0,00</strong> por mês.</p>
+          <div class="aviso" id="mecanismo-jogo" hidden></div>
 
           <p hidden>
             <label for="medidor-renda" id="frase-renda">Parte da renda indo para apostas</label><br>
@@ -203,7 +220,7 @@
             </table>
           </div>
           <p class="fonte-dado">O rendimento de 10% ao ano é uma aproximação fixa, escolhida em novembro de 2026, e não a taxa de nenhuma aplicação específica. A conta usa juros compostos mensais: i<sub>mês</sub> = (1,10)<sup>1/12</sup> − 1, com depósitos todo mês.</p>
-          <p><a href="ajuda.html">Montar um plano para colocar um teto nesse valor</a></p>
+          <p>Esse valor entra no <a href="ajuda.html">seu extrato</a>, no fim da jornada.</p>
         </section>
       </section>
 
