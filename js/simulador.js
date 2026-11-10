@@ -234,6 +234,14 @@
     if (sessao) desenharTabela();
   });
 
+  const campoCor = document.getElementById("cor-ficha");
+  const corSalva = Estado.ler().cor;
+  if (corSalva) campoCor.value = corSalva;
+  campoCor.addEventListener("change", function () {
+    Estado.gravar("cor", campoCor.value);
+    if (typeof Cassino !== "undefined") Cassino.chuva("ficha", 6);
+  });
+
   mostraValor.textContent = formatarReais(Number(campoValor.value));
   campoNumero.disabled = form.querySelector('input[name="tipo"]:checked').value !== "numero";
 })();

@@ -1692,3 +1692,232 @@ html.cortina-fechada .cortina {
     pointer-events: none;
   }
 }
+
+.cadastro {
+  margin: 3rem 0;
+  padding: 1.5rem;
+  border-radius: 18px;
+  border: 2px solid var(--destaque);
+  background: linear-gradient(160deg, rgba(255, 194, 61, 0.12), transparent 60%), var(--painel);
+  box-shadow: 0 0 40px rgba(255, 194, 61, 0.15);
+}
+
+.cadastro-oferta {
+  position: relative;
+}
+
+.cadastro-oferta h2 {
+  margin-top: 0.5rem;
+}
+
+.cadastro-selo {
+  display: inline-block;
+  margin: 0;
+  padding: 0.2rem 0.9rem;
+  border-radius: 999px;
+  background: var(--destaque-2, var(--destaque));
+  color: #fff;
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  font-weight: 800;
+  transform: rotate(-4deg);
+}
+
+.cadastro form {
+  margin: 1.5rem 0 0;
+}
+
+.cadastro .resultado {
+  border-color: var(--destaque);
+}
+
+.comprovante {
+  max-width: 26rem;
+  margin: 2rem 0;
+  padding: 1.75rem 1.5rem 2.25rem;
+  background: #fffdf7;
+  color: #222;
+  font-family: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  box-shadow: 0 18px 40px rgba(28, 43, 35, 0.18);
+  -webkit-mask: radial-gradient(circle 7px at 50% 100%, transparent 98%, #000) 50% 100% / 18px 100% repeat-x;
+  mask: radial-gradient(circle 7px at 50% 100%, transparent 98%, #000) 50% 100% / 18px 100% repeat-x;
+}
+
+.comprovante a {
+  color: #2f6b4f;
+}
+
+.comprovante-topo {
+  text-align: center;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px dashed #999;
+}
+
+.comprovante-topo p {
+  margin: 0;
+}
+
+.comprovante-casa {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.comprovante-sub,
+.comprovante-data {
+  color: #666;
+}
+
+.comprovante table {
+  font-size: 0.82rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.comprovante th,
+.comprovante td {
+  border: 0;
+  padding: 0.25rem 0;
+  color: #222;
+}
+
+.comprovante thead th {
+  position: static;
+  background: none;
+  color: #666;
+  border-bottom: 1px dashed #999;
+}
+
+.comprovante tfoot th,
+.comprovante tfoot td {
+  border-top: 1px dashed #999;
+  font-weight: 700;
+}
+
+.comprovante-destaque {
+  font-weight: 700;
+}
+
+.comprovante-rodape {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #999;
+  text-align: center;
+  color: #555;
+}
+
+.comprovante-rodape p {
+  margin: 0 0 0.5rem;
+}
+
+#comprovante-reflexao {
+  font-style: italic;
+  color: #222;
+}
+
+.perguntas {
+  padding-left: 1.5rem;
+}
+
+.perguntas > li {
+  margin-bottom: 0.75rem;
+}
+
+.perguntas fieldset {
+  margin: 0;
+}
+
+.perguntas legend {
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+  white-space: normal;
+}
+
+.opcoes-linha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.opcoes-linha li {
+  margin: 0;
+}
+
+.maquina-fala {
+  min-height: 3em;
+  margin: 1rem 0 0.5rem;
+  text-align: center;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+}
+
+.maquina-controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+}
+
+.maquina-controles p {
+  margin: 0;
+}
+
+.maquina .botao {
+  font-size: 1.15rem;
+  padding: 0.9rem 2rem;
+  box-shadow: 0 6px 0 #a3105d, 0 0 24px rgba(255, 46, 151, 0.5);
+}
+
+.maquina .botao:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #a3105d;
+}
+
+.placar-maquina {
+  margin: 1rem 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(253, 240, 255, 0.75);
+}
+
+.linha-paga.pisca {
+  animation: piscar-linha 0.25s steps(1) 4;
+}
+
+@keyframes piscar-linha {
+  50% {
+    border-color: #ff2e97;
+    box-shadow: 0 0 40px rgba(255, 46, 151, 1);
+  }
+}
+
+.revelacao {
+  max-width: 34rem;
+  margin: 1.5rem auto 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 14px;
+  border: 2px dashed var(--destaque-2);
+  background: rgba(0, 229, 255, 0.08);
+}
+
+.revelacao h3 {
+  margin-top: 0;
+  color: var(--destaque-2);
+}
+
+.revelacao p:last-child {
+  margin-bottom: 0;
+}

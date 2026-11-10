@@ -128,44 +128,34 @@ const Raspadinha = (function () {
     });
   }
 
-  function faixaQuase() {
-    const cena = document.getElementById("cena-quase");
-    if (!cena) return;
-    const APOSTA = 17;
-    const PAROU = 34;
-    const faixa = document.getElementById("faixa-cena");
-    const trilho = Roleta.montarFaixa(faixa);
-    Roleta.posicionar(faixa, trilho, PAROU);
-    trilho.querySelectorAll('[data-numero="' + APOSTA + '"]').forEach(function (casa) {
-      casa.classList.add("alvo");
-    });
-    if (!animar) return;
-    const final = new DOMMatrixReadOnly(getComputedStyle(trilho).transform).m41;
-    const umaVolta = trilho.children[0].offsetWidth * 37;
-    const passos = cena.querySelectorAll(".cena-texto p");
-    gsap.timeline({ scrollTrigger: { trigger: cena, start: "center center", end: "+=1600", pin: true, scrub: 0.6 } })
-      .fromTo(trilho, { x: final + umaVolta * 0.85 }, { x: final, ease: "power3.out", duration: 3 }, 0)
-      .from(passos[0], { autoAlpha: 0, y: 20, duration: 0.4 }, 0)
-      .from(passos[1], { autoAlpha: 0, y: 20, duration: 0.4 }, 1.2)
-      .from(passos[2], { autoAlpha: 0, y: 20, duration: 0.4 }, 2.6)
-      .to(faixa, { scale: 1.03, duration: 0.2, yoyo: true, repeat: 1 }, 2.9);
-  }
-
-  function cacaNiquel() {
+  function maquina() {
     const cena = document.getElementById("caca-niquel");
     if (!cena) return;
-    const SIMBOLOS = ["♣", "♥", "BAR", "♦", "$", "♠", "♥", "♣", "BAR", "♦", "♠", "$"];
-    const PARADA = 18;
-    const fitas = cena.querySelectorAll(".rolo-fita");
+    const SIMBOLOS = ["7", "♣", "BAR", "♥", "$", "♦", "♠", "★"];
+    const N = SIMBOLOS.length;
+    const COPIAS = 8;
+    const ROTEIRO = ["quase", "perde", "quase", "quase", "ganha", "quase"];
+    const PREMIO = { "7": 50, padrao: 10 };
+    const DURACOES = [1.1, 1.7, 2.3];
+    const DURACAO_SUSPENSE = 3.85;
+    const fitas = Array.from(cena.querySelectorAll(".rolo-fita"));
+    const botao = document.getElementById("puxar");
+    const fala = document.getElementById("maquina-fala");
+    const placar = document.getElementById("placar-maquina");
+    const som = document.getElementById("som-maquina");
+    const revelacao = document.getElementById("revelacao");
+    const audio = new Audio(document.querySelector("audio source").src);
+    const posicoes = [0, 0, 0];
+    let altura = 0;
+    let creditos = 20;
+    let giros = 0;
+    let quases = 0;
+    let vitorias = 0;
+    let girando = false;
+
     fitas.forEach(function (fita, r) {
       const lista = [];
-      for (let i = 0; i < PARADA + 2; i++) lista.push(SIMBOLOS[(i * 5 + r * 3) % SIMBOLOS.length]);
-      if (r < 2) {
-        lista[PARADA] = "7";
-      } else {
-        lista[PARADA - 1] = "7";
-        lista[PARADA] = "♣";
-      }
+      for (let k = 0; k < N * COPIAS; k++) lista.push(SIMBOLOS[(k + r * 3) % N]);
       fita.replaceChildren.apply(fita, lista.map(function (s) {
         const el = document.createElement("span");
         el.textContent = s;
@@ -173,30 +163,148 @@ const Raspadinha = (function () {
         return el;
       }));
     });
-    const altura = fitas[0].firstChild.offsetHeight;
-    const fim = -(PARADA - 1) * altura;
-    if (!animar) {
-      fitas.forEach(function (f) { f.style.transform = "translateY(" + fim + "px)"; });
-      return;
-    }
-    const passos = cena.querySelectorAll(".cena-texto p");
-    const linha = gsap.timeline({ scrollTrigger: { trigger: cena, start: "center center", end: "+=1500", pin: true, scrub: 0.6 } });
-    fitas.forEach(function (fita, r) {
-      linha.fromTo(fita, { y: 0 }, { y: fim, duration: 1 + r * 0.7, ease: r === 2 ? "back.out(1.2)" : "power3.out" }, 0);
-    });
-    linha
-      .from(passos[0], { autoAlpha: 0, y: 20, duration: 0.3 }, 0.8)
-      .from(passos[1], { autoAlpha: 0, y: 20, duration: 0.3 }, 1.5)
-      .from(passos[2], { autoAlpha: 0, y: 20, duration: 0.3 }, 2.3)
-      .to(".linha-paga", { boxShadow: "0 0 40px rgba(255, 46, 151, 1)", borderColor: "#ff2e97", duration: 0.2, yoyo: true, repeat: 3 }, 2.4);
-  }
 
-  function palavras() {
-    if (!animar || typeof SplitText === "undefined") return;
-    document.querySelectorAll("[data-palavras]").forEach(function (paragrafo) {
-      const partes = SplitText.create(paragrafo, { type: "words" });
-      gsap.fromTo(partes.words, { opacity: 0.15 }, { opacity: 1, stagger: 0.1, ease: "none", scrollTrigger: { trigger: paragrafo, start: "top 80%", end: "bottom 45%", scrub: true } });
+    function indiceDoSimbolo(r, simbolo) {
+      return (SIMBOLOS.indexOf(simbolo) - r * 3 + N * 4) % N;
+    }
+
+    function simboloNaLinha(r, pos) {
+      return SIMBOLOS[(pos + r * 3) % N];
+    }
+
+    function deslocamento(pos) {
+      return -(pos - 1) * altura;
+    }
+
+    function medir() {
+      altura = fitas[0].firstChild.offsetHeight;
+      fitas.forEach(function (fita, r) {
+        fita.style.transform = "translateY(" + deslocamento(posicoes[r]) + "px)";
+      });
+    }
+
+    function sortearAlvos(tipo) {
+      const aleatorio = function () { return SIMBOLOS[Math.floor(Math.random() * N)]; };
+      if (tipo === "quase") {
+        const s = giros <= 1 || Math.random() < 0.6 ? "7" : aleatorio();
+        const acima = Math.random() < 0.5;
+        const pos3 = (indiceDoSimbolo(2, s) + (acima ? 1 : -1) + N) % N;
+        return { alvos: [indiceDoSimbolo(0, s), indiceDoSimbolo(1, s), pos3], simbolo: s, acima: acima };
+      }
+      if (tipo === "ganha") {
+        const s = "♣";
+        return { alvos: [0, 1, 2].map(function (r) { return indiceDoSimbolo(r, s); }) };
+      }
+      let alvos;
+      do {
+        alvos = [0, 1, 2].map(function () { return Math.floor(Math.random() * N); });
+      } while (simboloNaLinha(0, alvos[0]) === simboloNaLinha(1, alvos[1]));
+      return { alvos: alvos };
+    }
+
+    function proximoTipo() {
+      if (giros < ROTEIRO.length) return ROTEIRO[giros];
+      const sorte = Math.random();
+      if (sorte < 1 / 64) return "ganha";
+      return sorte < 0.5 ? "quase" : "perde";
+    }
+
+    function atualizarPlacar() {
+      placar.textContent = "Créditos: " + creditos + ". Giros: " + giros + ". Quases: " + quases + ". Vitórias: " + vitorias + ".";
+    }
+
+    function narrar(tipo, resultado) {
+      if (tipo === "ganha") {
+        const s = simboloNaLinha(0, resultado.alvos[0]);
+        return "Três " + s + " na linha! Ganhou " + (PREMIO[s] || PREMIO.padrao) + " créditos.";
+      }
+      if (tipo === "quase") {
+        const onde = resultado.acima ? "logo acima" : "logo abaixo";
+        return resultado.simbolo === "7"
+          ? "Quase! O terceiro sete parou " + onde + " da linha."
+          : "Quase! Dois " + resultado.simbolo + " na linha e o terceiro " + onde + ".";
+      }
+      return "Nada desta vez.";
+    }
+
+    function revelar() {
+      revelacao.replaceChildren();
+      const titulo = document.createElement("h3");
+      titulo.textContent = "Esta máquina é viciada em quases";
+      const texto = document.createElement("p");
+      texto.textContent = "Em " + giros + " giros, você viu " + quases + (quases === 1 ? " quase acerto" : " quase acertos") + ". Numa máquina honesta com estes rolos, um quase assim aparece em média 1 vez a cada 32 giros. Esta foi programada para mostrar quases com muito mais frequência, sem pagar nada a mais por eles. É isso que o desenho de uma tela digital permite fazer.";
+      revelacao.append(titulo, texto);
+      revelacao.hidden = false;
+    }
+
+    function terminar(tipo, resultado) {
+      fitas.forEach(function (fita, r) {
+        posicoes[r] = resultado.alvos[r] + N;
+        fita.style.transform = "translateY(" + deslocamento(posicoes[r]) + "px)";
+        if (animar) gsap.set(fita, { clearProps: "transform" });
+        fita.style.transform = "translateY(" + deslocamento(posicoes[r]) + "px)";
+      });
+      if (tipo === "ganha") {
+        const s = simboloNaLinha(0, resultado.alvos[0]);
+        creditos += PREMIO[s] || PREMIO.padrao;
+        vitorias += 1;
+        if (typeof Cassino !== "undefined") Cassino.chuva("moeda", 16);
+      }
+      if (tipo === "quase") {
+        quases += 1;
+        const linhaPaga = cena.querySelector(".linha-paga");
+        linhaPaga.classList.remove("pisca");
+        void linhaPaga.offsetWidth;
+        linhaPaga.classList.add("pisca");
+      }
+      fala.textContent = narrar(tipo, resultado);
+      atualizarPlacar();
+      Estado.gravar("maquina", { giros: giros, quases: quases });
+      if (giros === 5 || (giros > 5 && giros % 10 === 0)) revelar();
+      girando = false;
+      botao.disabled = false;
+      botao.textContent = creditos > 0 ? "Puxar a alavanca" : "Recomeçar com 20 créditos";
+    }
+
+    botao.addEventListener("click", function () {
+      if (girando) return;
+      if (creditos <= 0) {
+        creditos = 20;
+        atualizarPlacar();
+        fala.textContent = "Créditos de mentira reabastecidos.";
+        botao.textContent = "Puxar a alavanca";
+        return;
+      }
+      girando = true;
+      botao.disabled = true;
+      creditos -= 1;
+      const tipo = proximoTipo();
+      giros += 1;
+      const resultado = sortearAlvos(tipo);
+      atualizarPlacar();
+      fala.textContent = "Girando...";
+      if (!animar) {
+        terminar(tipo, resultado);
+        return;
+      }
+      if (tipo === "quase" && som.checked) {
+        audio.currentTime = 0;
+        audio.play().catch(function () {});
+      }
+      const linha = gsap.timeline({ onComplete: function () { terminar(tipo, resultado); } });
+      fitas.forEach(function (fita, r) {
+        const inicio = posicoes[r] % N;
+        const voltas = 3 + r;
+        const destino = resultado.alvos[r] + N * (voltas + 1);
+        const duracao = r === 2 && tipo === "quase" ? DURACAO_SUSPENSE : DURACOES[r];
+        linha.fromTo(fita, { y: deslocamento(inicio + N) }, { y: deslocamento(destino), duration: duracao, ease: r === 2 && tipo === "quase" ? "power4.out" : "power3.out" }, 0);
+        resultado.alvos[r] = destino % N;
+      });
     });
+
+    window.addEventListener("resize", medir);
+    medir();
+    atualizarPlacar();
   }
 
   function crash() {
@@ -264,6 +372,11 @@ const Raspadinha = (function () {
       ctx.fill();
     }
 
+    function registrarNoExtrato(apostado, recebido) {
+      const anterior = Estado.ler().crash || { apostado: 0, recebido: 0 };
+      Estado.gravar("crash", { apostado: anterior.apostado + apostado, recebido: anterior.recebido + recebido });
+    }
+
     function atualizarSaldo() {
       saldoEl.textContent = formatarReais(saldo);
       apostar.textContent = saldo < APOSTA ? "Recomeçar com R$ 100" : "Apostar R$ 10";
@@ -318,6 +431,7 @@ const Raspadinha = (function () {
       }
       saldo -= APOSTA;
       atualizarSaldo();
+      registrarNoExtrato(APOSTA, 0);
       queda = sortearQueda();
       retirou = 0;
       pontos = [];
@@ -337,6 +451,7 @@ const Raspadinha = (function () {
       const ganho = APOSTA * retirou;
       saldo += ganho;
       atualizarSaldo();
+      registrarNoExtrato(0, ganho);
       retirar.disabled = true;
       aviso.textContent = "Retirou em " + formatarX(retirou) + ": recebeu " + formatarReais(ganho) + ". Veja até onde ele vai...";
       if (typeof Cassino !== "undefined" && retirou >= 1.5) Cassino.chuva("moeda", 10);
@@ -487,7 +602,7 @@ const Raspadinha = (function () {
   const cenas = {
     lobby: lobby,
     poker: poker,
-    slots: function () { faixaQuase(); cacaNiquel(); palavras(); },
+    slots: maquina,
     crash: crash,
     futebol: function () { odds(); graficoSaldos(); },
     loteria: contadores

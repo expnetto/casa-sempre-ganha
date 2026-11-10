@@ -5,7 +5,7 @@
     <meta http-equiv="content-language" content="pt-br">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Eraldo Xavier Pimentel Netto">
-    <meta name="keywords" content="quase acerto, near miss, roleta, cérebro, apostas">
+    <meta name="keywords" content="quase acerto, near miss, caça-níquel, cérebro, apostas">
     <meta name="description" content="Por que perder por pouco dá vontade de jogar de novo: o efeito do quase acerto nas apostas.">
     <meta name="theme-color" content="#0f2b24">
     <title>O quase ganhou | A casa sempre ganha</title>
@@ -34,7 +34,7 @@
       <li><span class="menu-capitulo">Por que prende</span><ul><li><a href="mecanismos.html">Os três mecanismos</a></li><li><a href="mecanismo-quase-ganhou.html" aria-current="page">O quase ganhou</a></li><li><a href="mecanismo-reforco-variavel.html">Reforço variável</a></li><li><a href="mecanismo-ilusao-controle.html">Ilusão de controle</a></li></ul></li>
       <li><span class="menu-capitulo">Experimente</span><ul><li><a href="simulador.html">Simulador de roleta</a></li></ul></li>
       <li><span class="menu-capitulo">Quanto custa</span><ul><li><a href="numeros.html">Calculadora de gasto</a></li></ul></li>
-      <li><span class="menu-capitulo">E agora</span><ul><li><a href="ajuda.html">Plano de limites e apoio</a></li></ul></li>
+      <li><span class="menu-capitulo">E agora</span><ul><li><a href="ajuda.html">Seu extrato e apoio</a></li></ul></li>
       </ol>
       <p class="menu-consulta">Consulta</p>
       <ul><li><a href="glossario.html">Glossário</a></li><li><a href="fontes.html">Fontes</a></li><li><a href="sobre.html">Sobre o projeto</a></li></ul>
@@ -53,21 +53,12 @@
 
       <header class="abertura-pagina" id="topo">
         <h1>O quase ganhou</h1>
-        <p class="chamada">Você apostou no 17. A bolinha parou no 34, bem do lado. Perdeu, mas não parece uma derrota.</p>
+        <p class="chamada">Dois setes na linha. O terceiro para logo acima. Você perdeu, mas não parece uma derrota: parece que faltou pouco.</p>
       </header>
 
-      <section class="cena largo" id="cena-quase" aria-label="Animação: a bolinha para na casa vizinha à aposta">
-        <div class="cena-palco">
-          <div class="faixa" id="faixa-cena"></div>
-        </div>
-        <div class="cena-texto">
-          <p>Você apostou no <strong>17</strong>, a casa com borda dourada.</p>
-          <p>A roleta perde velocidade. O 17 passa pelo marcador uma vez, duas vezes...</p>
-          <p class="cena-final">Parou no 34. A uma casa do 17.</p>
-        </div>
-      </section>
-
-      <section class="cena-maquina largo" id="caca-niquel" aria-label="Animação: dois setes na linha e o terceiro para logo acima">
+      <section class="cena-maquina largo" id="caca-niquel" aria-labelledby="titulo-maquina">
+        <h2 id="titulo-maquina">Puxe a alavanca</h2>
+        <p>Uma caça-níquel com créditos de mentira. Jogue alguns giros e repare no que aparece perto da linha.</p>
         <div class="maquina">
           <p class="maquina-letreiro" aria-hidden="true">Sete da sorte</p>
           <div class="rolos" aria-hidden="true">
@@ -76,18 +67,23 @@
             <div class="rolo"><div class="rolo-fita"></div></div>
             <div class="linha-paga"></div>
           </div>
+          <p class="maquina-fala" id="maquina-fala" aria-live="polite">Cada giro custa 1 crédito. Três iguais na linha pagam 10; três setes pagam 50.</p>
+          <div class="maquina-controles">
+            <button class="botao" type="button" id="puxar">Puxar a alavanca</button>
+            <p>
+              <input type="checkbox" id="som-maquina" name="som-maquina" checked>
+              <label for="som-maquina">Som</label>
+            </p>
+          </div>
+          <p class="placar-maquina" id="placar-maquina">Créditos: 20. Giros: 0. Quases: 0. Vitórias: 0.</p>
         </div>
-        <div class="cena-texto">
-          <p>Na caça-níquel é igual. O primeiro sete para na linha.</p>
-          <p>O segundo também. Falta um.</p>
-          <p class="cena-final">O terceiro para logo acima da linha.</p>
-        </div>
+        <aside class="revelacao" id="revelacao" hidden aria-live="polite"></aside>
       </section>
 
       <article>
         <h2>O que acontece no cérebro</h2>
         <p>Em 2009, pesquisadores da Universidade de Cambridge colocaram voluntários num aparelho de ressonância enquanto jogavam uma máquina simples. Quando o resultado chegava perto do prêmio, as áreas do cérebro ligadas à recompensa reagiam <em>quase como numa vitória</em>. E, logo depois de um quase, os participantes diziam ter <strong>mais vontade de continuar jogando</strong>, não menos.</p>
-        <p data-palavras>Do ponto de vista da matemática, o quase não existe. Cair no 34 ou no 4 dá exatamente o mesmo prejuízo. Mas para quem joga, o quase vira um sinal de que “está chegando perto”, de que a habilidade está melhorando ou de que a sorte está virando.</p>
+        <p>Do ponto de vista da matemática, o quase não existe. O sete parar logo acima da linha ou do outro lado do rolo dá exatamente o mesmo prejuízo. Mas para quem joga, o quase vira um sinal de que “está chegando perto”, de que a habilidade está melhorando ou de que a sorte está virando.</p>
 
         <figure>
           <img src="../img/quase-ganhou.png" width="900" height="600" alt="Faixa de casas da roleta: a aposta no 17 e a bolinha parada no 34, a casa vizinha.">
@@ -136,7 +132,6 @@
     <script src="../js/estado.js"></script>
     <script src="../js/nav.js"></script>
     <script src="../js/efeitos.js"></script>
-    <script src="../js/roleta.js"></script>
     <script src="../js/cenas.js"></script>
   </body>
 </html>
