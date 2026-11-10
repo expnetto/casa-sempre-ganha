@@ -1,0 +1,408 @@
+.moldura {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+}
+
+.lateral {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 43, 36, 0.78);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid var(--linha);
+}
+
+.marca {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 1.35rem;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--giz);
+  text-decoration: none;
+}
+
+.marca span {
+  color: var(--destaque);
+}
+
+.botao-menu {
+  font: inherit;
+  font-weight: 700;
+  color: var(--giz);
+  background: transparent;
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  cursor: pointer;
+}
+
+.botao-menu:hover {
+  border-color: var(--destaque);
+}
+
+.menu {
+  width: 100%;
+  display: none;
+  padding: 0.5rem 0 1rem;
+}
+
+.sem-js .menu,
+.menu.aberto {
+  display: block;
+}
+
+.sem-js .botao-menu {
+  display: none;
+}
+
+.menu-capitulos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: capitulo;
+}
+
+.menu-capitulos > li {
+  counter-increment: capitulo;
+  margin: 0 0 0.9rem;
+}
+
+.menu-capitulo {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--giz-fraco);
+  margin-bottom: 0.2rem;
+}
+
+.menu-capitulo::before {
+  content: counter(capitulo) ". ";
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu ul li {
+  margin: 0;
+}
+
+.menu a {
+  display: block;
+  padding: 0.3rem 0.6rem;
+  margin-left: -0.6rem;
+  border-radius: var(--raio);
+  color: var(--giz-suave);
+  text-decoration: none;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.menu a:hover {
+  color: var(--giz);
+  background: rgba(239, 232, 216, 0.07);
+}
+
+.menu a[aria-current="page"] {
+  color: var(--feltro);
+  background: var(--destaque);
+  font-weight: 700;
+}
+
+.menu-consulta {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--giz-fraco);
+  margin: 1.2rem 0 0.2rem;
+}
+
+.saldo-lateral {
+  width: 100%;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--giz-suave);
+}
+
+.saldo-lateral[hidden] {
+  display: none;
+}
+
+
+.conteudo {
+  width: 100%;
+  max-width: var(--largo);
+  padding: 1.5rem 1rem 4rem;
+  margin: 0 auto;
+}
+
+.conteudo > * {
+  max-width: var(--leitura);
+}
+
+.conteudo > .largo {
+  max-width: none;
+}
+
+.trilha {
+  list-style: none;
+  display: flex;
+  gap: 0.25rem;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  max-width: none;
+  font-size: 0.8rem;
+}
+
+.trilha li {
+  flex: 1;
+  margin: 0;
+  padding-top: 0.5rem;
+  border-top: 3px solid var(--linha);
+  color: var(--giz-fraco);
+  min-width: 0;
+}
+
+.trilha li.feito {
+  border-top-color: rgba(224, 169, 59, 0.45);
+}
+
+.trilha li.atual {
+  border-top-color: var(--destaque);
+  color: var(--giz);
+  font-weight: 700;
+}
+
+.trilha a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trilha a:hover {
+  color: var(--giz);
+}
+
+.abertura-pagina {
+  margin-bottom: 2.5rem;
+}
+
+.chamada {
+  font-size: 1.3rem;
+  line-height: 1.45;
+  color: var(--giz-suave);
+  max-width: 36rem;
+}
+
+.proxima {
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--linha);
+}
+
+.proxima p {
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+  color: var(--giz-fraco);
+}
+
+.proxima a {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1.1;
+  text-decoration: none;
+}
+
+.proxima a:hover {
+  text-decoration: underline;
+}
+
+.rodape {
+  padding: 2rem 1rem 3rem;
+  border-top: 1px solid var(--linha);
+  font-size: 0.9rem;
+  color: var(--giz-fraco);
+}
+
+.rodape p {
+  margin: 0 0 0.5rem;
+  max-width: var(--leitura);
+}
+
+.rodape a {
+  color: var(--giz-suave);
+}
+
+.topo {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.js .conteudo {
+  animation: entrar-frente 260ms var(--curva-entrada) backwards;
+}
+
+.js.vindo-de-tras .conteudo {
+  animation-name: entrar-tras;
+}
+
+.js.saindo-frente .conteudo {
+  animation: sair-frente var(--saida) var(--curva-saida) forwards;
+}
+
+.js.saindo-tras .conteudo {
+  animation: sair-tras var(--saida) var(--curva-saida) forwards;
+}
+
+@keyframes entrar-frente {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+}
+
+@keyframes entrar-tras {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+}
+
+@keyframes sair-frente {
+  to {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+}
+
+@keyframes sair-tras {
+  to {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+}
+
+@media (min-width: 720px) {
+  .conteudo {
+    padding: 2.5rem 2.5rem 5rem;
+  }
+
+  .rodape {
+    padding: 2rem 2.5rem 3rem;
+  }
+
+  .trilha {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .moldura {
+    grid-template-columns: 17rem 1fr;
+    grid-template-rows: 1fr auto;
+  }
+
+  .lateral {
+    grid-row: 1 / span 2;
+    height: 100vh;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    padding: 2rem 1.75rem;
+    overflow-y: auto;
+    border-bottom: 0;
+    border-right: 1px solid var(--linha);
+    background: rgba(10, 32, 27, 0.6);
+  }
+
+  .marca {
+    font-size: 1.9rem;
+  }
+
+  .botao-menu {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+    padding: 0;
+  }
+
+  .saldo-lateral {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--linha);
+  }
+
+  .conteudo {
+    margin: 0;
+    padding: 3rem 4rem 5rem;
+  }
+
+  .rodape {
+    padding: 2rem 4rem 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .conteudo,
+  .js.vindo-de-tras .conteudo {
+    animation: aparecer 160ms ease backwards;
+  }
+
+  .js.saindo-frente .conteudo,
+  .js.saindo-tras .conteudo {
+    animation: sumir 120ms ease forwards;
+  }
+
+  @keyframes aparecer {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes sumir {
+    to {
+      opacity: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .lateral {
+    background: var(--feltro-2);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+.moldura > * {
+  min-width: 0;
+}
+
+@media (max-width: 719px) {
+  .trilha li:not(.atual) .trilha-nome {
+    display: none;
+  }
+
+  .trilha li.atual {
+    flex: 3;
+  }
+}
