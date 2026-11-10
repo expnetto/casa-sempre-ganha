@@ -16,8 +16,13 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/componentes.css">
+    <link rel="stylesheet" href="../css/temas.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Monoton&amp;display=swap">
+    <script src="../js/inicio.js"></script>
   </head>
-  <body>
+  <body data-tema="slots">
+    <div class="cortina" aria-hidden="true"><div class="cortina-listras"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="cortina-aviso"><span class="cortina-ficha"></span><p>Carregando</p><strong class="cortina-jogo"></strong></div></div>
+    <div class="preloader" aria-hidden="true"><div class="maquina-entrada"><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div></div><button class="preloader-pular" type="button" tabindex="-1">Pular</button></div>
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
     <div class="moldura">
       <header class="lateral">
@@ -62,10 +67,27 @@
         </div>
       </section>
 
+      <section class="cena-maquina largo" id="caca-niquel" aria-label="Animação: dois setes na linha e o terceiro para logo acima">
+        <div class="maquina">
+          <p class="maquina-letreiro" aria-hidden="true">Sete da sorte</p>
+          <div class="rolos" aria-hidden="true">
+            <div class="rolo"><div class="rolo-fita"></div></div>
+            <div class="rolo"><div class="rolo-fita"></div></div>
+            <div class="rolo"><div class="rolo-fita"></div></div>
+            <div class="linha-paga"></div>
+          </div>
+        </div>
+        <div class="cena-texto">
+          <p>Na caça-níquel é igual. O primeiro sete para na linha.</p>
+          <p>O segundo também. Falta um.</p>
+          <p class="cena-final">O terceiro para logo acima da linha.</p>
+        </div>
+      </section>
+
       <article>
         <h2>O que acontece no cérebro</h2>
         <p>Em 2009, pesquisadores da Universidade de Cambridge colocaram voluntários num aparelho de ressonância enquanto jogavam uma máquina simples. Quando o resultado chegava perto do prêmio, as áreas do cérebro ligadas à recompensa reagiam <em>quase como numa vitória</em>. E, logo depois de um quase, os participantes diziam ter <strong>mais vontade de continuar jogando</strong>, não menos.</p>
-        <p>Do ponto de vista da matemática, o quase não existe. Cair no 34 ou no 4 dá exatamente o mesmo prejuízo. Mas para quem joga, o quase vira um sinal de que “está chegando perto”, de que a habilidade está melhorando ou de que a sorte está virando.</p>
+        <p data-palavras>Do ponto de vista da matemática, o quase não existe. Cair no 34 ou no 4 dá exatamente o mesmo prejuízo. Mas para quem joga, o quase vira um sinal de que “está chegando perto”, de que a habilidade está melhorando ou de que a sorte está virando.</p>
 
         <figure>
           <img src="../img/quase-ganhou.png" width="900" height="600" alt="Faixa de casas da roleta: a aposta no 17 e a bolinha parada no 34, a casa vizinha.">
@@ -107,11 +129,14 @@
         <p><small>Nenhum dinheiro de verdade é usado neste site e nada do que você digita sai do seu navegador. Se apostar deixou de ser diversão, ligue <a href="tel:188">188</a> (CVV) ou veja a página <a href="ajuda.html">E agora</a>.</small></p>
       </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
     <script src="../js/estado.js"></script>
     <script src="../js/nav.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="../js/efeitos.js"></script>
     <script src="../js/roleta.js"></script>
-    <script src="../js/cena-gsap.js"></script>
+    <script src="../js/cenas.js"></script>
   </body>
 </html>

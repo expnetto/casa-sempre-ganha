@@ -16,8 +16,13 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/componentes.css">
+    <link rel="stylesheet" href="../css/temas.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&amp;display=swap">
+    <script src="../js/inicio.js"></script>
   </head>
-  <body>
+  <body data-tema="crash">
+    <div class="cortina" aria-hidden="true"><div class="cortina-listras"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="cortina-aviso"><span class="cortina-ficha"></span><p>Carregando</p><strong class="cortina-jogo"></strong></div></div>
+    <div class="preloader" aria-hidden="true"><div class="maquina-entrada"><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div></div><button class="preloader-pular" type="button" tabindex="-1">Pular</button></div>
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
     <div class="moldura">
       <header class="lateral">
@@ -61,6 +66,24 @@
           <figcaption>Os dois esquemas pagam a mesma quantidade de prêmios. Só o de baixo deixa a pessoa sem saber quando parar.</figcaption>
         </figure>
 
+        <h2>Jogue o multiplicador</h2>
+        <p>Nos jogos de multiplicador, um número sobe a partir de 1,00x e cai a qualquer momento. Quem retira antes da queda leva a aposta multiplicada. Quem espera demais perde tudo. Você não sabe quando ele cai, e é exatamente por isso que é difícil parar.</p>
+        <section class="crash" id="crash" aria-label="Jogo do multiplicador com dinheiro de mentira">
+          <div class="crash-tela">
+            <canvas id="crash-tela" aria-hidden="true"></canvas>
+            <span class="crash-multiplicador" id="crash-numero">1,00x</span>
+            <p class="crash-aviso" id="crash-aviso" aria-live="polite">Aposte R$ 10 de mentira e tente retirar antes da queda.</p>
+          </div>
+          <div class="crash-controles">
+            <button class="botao" type="button" id="crash-apostar">Apostar R$ 10</button>
+            <button class="botao botao-secundario" type="button" id="crash-retirar" disabled>Retirar</button>
+            <p>Saldo: <strong id="crash-saldo">R$ 100,00</strong></p>
+          </div>
+          <p class="fonte-dado">Onde as últimas rodadas caíram:</p>
+          <ol class="historico" id="crash-historico"></ol>
+          <p class="fonte-dado">O ponto de queda é sorteado antes da rodada começar, com 3% de vantagem para a casa. Em média, cada R$ 100 apostados devolvem R$ 97, não importa quando você retira.</p>
+        </section>
+
         <h2>Veja o reforço acontecendo</h2>
         <p>O vídeo abaixo é uma gravação de tela do simulador deste site, girando rodada por rodada. Repare como as vitórias aparecem sem padrão: duas seguidas, depois um longo jejum, depois outra. O saldo cai, mas cada vitória parece um sinal de que vale continuar.</p>
         <div class="video-moldura">
@@ -99,7 +122,13 @@
         <p><small>Nenhum dinheiro de verdade é usado neste site e nada do que você digita sai do seu navegador. Se apostar deixou de ser diversão, ligue <a href="tel:188">188</a> (CVV) ou veja a página <a href="ajuda.html">E agora</a>.</small></p>
       </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
     <script src="../js/estado.js"></script>
     <script src="../js/nav.js"></script>
+    <script src="../js/efeitos.js"></script>
+    <script src="../js/cenas.js"></script>
   </body>
 </html>
