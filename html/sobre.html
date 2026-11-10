@@ -109,7 +109,7 @@
               </tr>
               <tr>
                 <th scope="row"><a href="../index.html">Início</a></th>
-                <td>h1, figure, figcaption, img, ul, button; cadastro com input text, email, password, date, checkbox e details com os termos</td>
+                <td>h1, figure, figcaption, img, ul, button</td>
                 <td>Lobby: roleta gigante girando, holofotes, lâmpadas e fichas que seguem o mouse</td>
               </tr>
               <tr>
@@ -119,13 +119,13 @@
               </tr>
               <tr>
                 <th scope="row"><a href="mecanismo-quase-ganhou.html">O quase ganhou</a></th>
-                <td>audio, source, details, summary, em, strong, checkbox do som</td>
+                <td>audio com source (o som da máquina), details, summary, em, strong, checkbox do som</td>
                 <td>Caça-níquel jogável, programada para mostrar quases com mais frequência que o acaso, com o som sincronizado ao último rolo</td>
               </tr>
               <tr>
                 <th scope="row"><a href="mecanismo-reforco-variavel.html">Reforço variável</a></th>
-                <td>video com controls, autoplay, muted, loop e poster, source</td>
-                <td>Multiplicador: jogo de crash em canvas e vídeo gravado do próprio simulador</td>
+                <td>figure, img, ul, details, canvas do jogo</td>
+                <td>Multiplicador: jogo de crash desenhado em canvas</td>
               </tr>
               <tr>
                 <th scope="row"><a href="mecanismo-ilusao-controle.html">Ilusão de controle</a></th>
@@ -134,8 +134,8 @@
               </tr>
               <tr>
                 <th scope="row"><a href="simulador.html">Simulador</a></th>
-                <td>form, fieldset, legend, label, input range, number, radio, checkbox, hidden, color, submit, reset, button, datalist, table, progress</td>
-                <td>Roleta: Math.random, laço de rodadas, tabela montada pelo JavaScript e lâmpadas que apagam com o saldo</td>
+                <td>form, fieldset, legend, label, input range, number, radio, checkbox, hidden, submit, reset, button, datalist, table, progress, video com controls, muted e poster dentro de details</td>
+                <td>Roleta: Math.random, laço de rodadas, tabela montada pelo JavaScript, lâmpadas que apagam com o saldo e um vídeo tutorial de 30 segundos</td>
               </tr>
               <tr>
                 <th scope="row"><a href="numeros.html">Quanto custa</a></th>
@@ -144,7 +144,7 @@
               </tr>
               <tr>
                 <th scope="row"><a href="ajuda.html">E agora</a></th>
-                <td>table do comprovante com tfoot, textarea, fieldset e radio do autoteste, progress, link tel:</td>
+                <td>table do comprovante com tfoot, textarea com o extrato em texto, fieldset e radio do autoteste, progress, link tel:</td>
                 <td>Fora do jogo: página clara e sem efeitos; o extrato soma o que foi jogado nas outras páginas, e o autoteste é montado pelo JavaScript</td>
               </tr>
               <tr>
@@ -178,7 +178,7 @@
         </details>
         <details>
           <summary>Como os dados ficam salvos</summary>
-          <p>Os resultados dos jogos, o total da calculadora, a resposta para o extrato e a cor da ficha ficam numa única chave do localStorage, chamada <b>csg</b>. Toda leitura e escrita passa pelo arquivo <b>js/estado.js</b>, que trata o caso de o navegador bloquear o salvamento, como no modo privado.</p>
+          <p>Os resultados dos jogos e o total da calculadora ficam numa única chave do localStorage, chamada <b>csg</b>. Toda leitura e escrita passa pelo arquivo <b>js/estado.js</b>, que trata o caso de o navegador bloquear o salvamento, como no modo privado.</p>
         </details>
         <details>
           <summary>Como a roleta funciona</summary>

@@ -76,58 +76,6 @@
         </div>
       </section>
 
-      <section class="cadastro" aria-labelledby="titulo-cadastro">
-        <div class="cadastro-oferta">
-          <p class="cadastro-selo" aria-hidden="true">Bônus</p>
-          <h2 id="titulo-cadastro">Crie sua conta e ganhe R$ 500 para apostar</h2>
-          <p>É assim que quase toda bet recebe quem chega. Preencha, se quiser: nada sai deste computador, e a senha é apagada assim que você envia.</p>
-        </div>
-        <form id="form-cadastro" novalidate>
-          <div class="campos-lado">
-            <div class="campo">
-              <label for="cad-nome">Nome</label>
-              <input type="text" id="cad-nome" name="cad-nome" maxlength="60" required autocomplete="off" placeholder="Como você se chama">
-            </div>
-            <div class="campo">
-              <label for="cad-nascimento">Data de nascimento</label>
-              <input type="date" id="cad-nascimento" name="cad-nascimento" required>
-            </div>
-            <div class="campo">
-              <label for="cad-email">E-mail</label>
-              <input type="email" id="cad-email" name="cad-email" required autocomplete="off" placeholder="nome@exemplo.com">
-            </div>
-            <div class="campo">
-              <label for="cad-senha">Senha</label>
-              <input type="password" id="cad-senha" name="cad-senha" minlength="6" required autocomplete="off" placeholder="Pelo menos 6 caracteres">
-            </div>
-          </div>
-          <p>
-            <input type="checkbox" id="cad-termos" name="cad-termos" required>
-            <label for="cad-termos">Li e aceito os termos e condições do bônus</label>
-          </p>
-          <details>
-            <summary>Termos e condições do bônus</summary>
-            <p><small>O bônus de boas-vindas está sujeito a requisito de apostas de 30 (trinta) vezes o valor concedido, em apostas com cotação mínima de 1,50, no prazo de 7 (sete) dias corridos a contar da concessão, sob pena de cancelamento do bônus e dos ganhos dele decorrentes. Saques solicitados antes do cumprimento integral do requisito implicam a perda do bônus.</small></p>
-          </details>
-          <p class="erro-campo" id="erro-cadastro" role="alert"></p>
-          <div class="acoes">
-            <button class="botao" type="submit">Quero meu bônus</button>
-          </div>
-        </form>
-
-        <section class="resultado" id="revelacao-cadastro" hidden aria-live="polite">
-          <h3>O que você acabou de aceitar</h3>
-          <p id="cadastro-saudacao"></p>
-          <ul>
-            <li><strong>Os R$ 500 não são seus.</strong> Os termos exigem apostar 30 vezes o bônus antes de sacar: <strong>R$ 15.000 em apostas</strong>, em 7 dias.</li>
-            <li><strong>A conta não fecha.</strong> Na roleta, a casa fica em média com 2,7% de cada aposta. Em R$ 15.000 apostados, isso dá cerca de <strong>R$ 405</strong>, quase todo o bônus. Em jogos com margem maior, passa dele.</li>
-            <li><strong>O bônus é uma isca de hábito.</strong> Para cumprir o requisito, você precisa apostar todo dia durante uma semana. É o tempo de criar a rotina.</li>
-            <li><strong>Você entregou seus dados.</strong> Uma bet de verdade guardaria agora o seu nome, a sua idade e o seu e-mail, e passaria a registrar cada aposta, horário e depósito.</li>
-          </ul>
-          <p class="fonte-dado">No Brasil, a Lei 14.790, de 2023, proíbe as empresas autorizadas de oferecer bônus ou vantagem antecipada para atrair apostadores. Ofertas assim costumam vir de sites sem autorização.</p>
-        </section>
-      </section>
-
       <hr>
 
       <section aria-labelledby="titulo-por-que">
@@ -181,7 +129,6 @@
     <script src="js/efeitos.js"></script>
     <script src="js/roleta.js"></script>
     <script src="js/abertura.js"></script>
-    <script src="js/cadastro.js"></script>
     <script src="js/cenas.js"></script>
   </body>
 </html>

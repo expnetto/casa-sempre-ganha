@@ -5,6 +5,12 @@
   const campoValor = document.getElementById("valor-aposta");
   const mostraValor = document.getElementById("mostra-valor");
   const campoNumero = document.getElementById("numero-escolhido");
+  const blocoNumero = document.getElementById("campo-numero");
+
+  function mostrarNumero(sim) {
+    campoNumero.disabled = !sim;
+    blocoNumero.hidden = !sim;
+  }
   const erro = document.getElementById("erro-simulador");
   const botaoUma = document.getElementById("girar-uma");
   const faixa = document.getElementById("faixa-simulador");
@@ -133,9 +139,11 @@
     numero.textContent = formatarReais(s.saldo);
     numero.classList.toggle("negativo", resultado < 0);
     document.getElementById("res-rodadas").textContent = s.linhas.length;
-    document.getElementById("res-apostado").textContent = formatarReais(s.apostado);
-    document.getElementById("res-resultado").textContent = formatarReais(resultado);
-    document.getElementById("res-esperado").textContent = formatarReais(esperado);
+    document.getElementById("frase-resultado").textContent =
+      "Você apostou " + formatarReais(s.apostado) + " ao todo e " +
+      (resultado < 0 ? "perdeu " + formatarReais(-resultado) : resultado > 0 ? "ganhou " + formatarReais(resultado) : "empatou") +
+      ". A matemática previa perder " + formatarReais(-esperado) + "." +
+      (resultado > 0 ? " Ganhar numa sessão curta é sorte; em muitas rodadas, o resultado sempre se aproxima da previsão." : "");
     document.getElementById("res-vitorias").textContent = s.vitorias;
     document.getElementById("res-quases").textContent = s.quases;
     const barra = document.getElementById("barra-saldo");
@@ -175,7 +183,7 @@
 
   form.addEventListener("change", function (evento) {
     if (evento.target.name === "tipo") {
-      campoNumero.disabled = evento.target.value !== "numero";
+      mostrarNumero(evento.target.value === "numero");
     }
   });
 
@@ -201,7 +209,7 @@
     legenda.textContent = "";
     setTimeout(function () {
       mostraValor.textContent = formatarReais(Number(campoValor.value));
-      campoNumero.disabled = true;
+      mostrarNumero(false);
     });
   });
 
@@ -234,14 +242,6 @@
     if (sessao) desenharTabela();
   });
 
-  const campoCor = document.getElementById("cor-ficha");
-  const corSalva = Estado.ler().cor;
-  if (corSalva) campoCor.value = corSalva;
-  campoCor.addEventListener("change", function () {
-    Estado.gravar("cor", campoCor.value);
-    if (typeof Cassino !== "undefined") Cassino.chuva("ficha", 6);
-  });
-
   mostraValor.textContent = formatarReais(Number(campoValor.value));
-  campoNumero.disabled = form.querySelector('input[name="tipo"]:checked').value !== "numero";
+  mostrarNumero(form.querySelector('input[name="tipo"]:checked').value === "numero");
 })();

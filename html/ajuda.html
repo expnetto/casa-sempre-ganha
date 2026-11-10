@@ -74,29 +74,24 @@
             <p>Você ainda não jogou nada aqui. Gire a roleta da <a href="../index.html">abertura</a>, jogue no <a href="simulador.html">simulador</a> ou no <a href="mecanismo-reforco-variavel.html">multiplicador</a> e volte para ver a conta.</p>
           </div>
           <footer class="comprovante-rodape">
-            <p id="comprovante-reflexao" hidden></p>
             <p>Obrigado pela preferência. Volte sempre.</p>
           </footer>
         </article>
 
+        <details class="copiar-extrato">
+          <summary>Copiar o extrato em texto</summary>
+          <div class="campo">
+            <label for="extrato-texto">O extrato em texto simples, para colar numa conversa ou numa nota</label>
+            <textarea id="extrato-texto" name="extrato-texto" rows="9" readonly></textarea>
+          </div>
+          <div class="acoes">
+            <button class="botao" type="button" id="copiar-extrato">Copiar</button>
+          </div>
+        </details>
+
         <div class="acoes">
           <button class="botao botao-secundario" type="button" id="zerar-extrato">Zerar o extrato</button>
         </div>
-      </section>
-
-      <section aria-labelledby="titulo-reflexao">
-        <h2 id="titulo-reflexao">O que você faria com esse dinheiro?</h2>
-        <form id="form-reflexao" novalidate>
-          <div class="campo">
-            <label for="reflexao">Pense no dinheiro que já saiu da sua conta para apostas, de verdade. O que você faria com ele?</label>
-            <textarea id="reflexao" name="reflexao" maxlength="300" required placeholder="Ex.: quitava o cartão e fazia aquela viagem com a minha mãe."></textarea>
-            <small>A sua resposta é impressa no comprovante acima e fica só neste navegador.</small>
-          </div>
-          <p class="erro-campo" id="erro-reflexao" role="alert"></p>
-          <div class="acoes">
-            <button class="botao" type="submit">Imprimir no comprovante</button>
-          </div>
-        </form>
       </section>
 
       <hr>

@@ -444,8 +444,7 @@ const Cassino = (function () {
 
   function chuva(tipo, quantidade) {
     if (!animar) return;
-    const corFicha = Estado.ler().cor;
-    const cores = corFicha ? [corFicha] : ["#c23b2e", "#1d1d1d", "#e0a93b", "#2f8a5b", "#2450c7"];
+    const cores = ["#c23b2e", "#1d1d1d", "#e0a93b", "#2f8a5b", "#2450c7"];
     for (let i = 0; i < quantidade; i++) {
       const peca = criar("div", "chuva " + (tipo === "nota" ? "nota" : tipo === "moeda" ? "cursor-peca peca-moeda" : "ficha"), corpo);
       if (tipo === "nota") peca.textContent = "R$";

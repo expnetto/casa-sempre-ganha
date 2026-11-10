@@ -58,7 +58,7 @@
 
       <section class="cena-maquina largo" id="caca-niquel" aria-labelledby="titulo-maquina">
         <h2 id="titulo-maquina">Puxe a alavanca</h2>
-        <p>Uma caça-níquel com créditos de mentira. Jogue alguns giros e repare no que aparece perto da linha.</p>
+        <p>Uma caça-níquel com créditos de mentira. Jogue alguns giros com o som ligado e repare no que aparece perto da linha. O som foi sintetizado para este projeto: a máquina girando e o tom de expectativa que termina sem a resolução de uma vitória.</p>
         <div class="maquina">
           <p class="maquina-letreiro" aria-hidden="true">Sete da sorte</p>
           <div class="rolos" aria-hidden="true">
@@ -74,6 +74,10 @@
               <input type="checkbox" id="som-maquina" name="som-maquina" checked>
               <label for="som-maquina">Som</label>
             </p>
+            <audio id="som-quase" preload="auto">
+              <source src="../audio/quase-acerto.mp3" type="audio/mpeg">
+              <source src="../audio/quase-acerto.ogg" type="audio/ogg">
+            </audio>
           </div>
           <p class="placar-maquina" id="placar-maquina">Créditos: 20. Giros: 0. Quases: 0. Vitórias: 0.</p>
         </div>
@@ -89,15 +93,6 @@
           <img src="../img/quase-ganhou.png" width="900" height="600" alt="Faixa de casas da roleta: a aposta no 17 e a bolinha parada no 34, a casa vizinha.">
           <figcaption>Na roleta europeia, cada número tem duas casas vizinhas. A chance de cair numa delas é de 2 em 37, o dobro da chance de acertar o próprio número.</figcaption>
         </figure>
-
-        <h2>Ouça o quase</h2>
-        <p>Os jogos online trabalham o som com o mesmo cuidado que a imagem. O som abaixo foi sintetizado para este projeto: a bolinha perdendo velocidade, o clique de cada casa e o tom que sobe quando ela passa pela aposta e para do lado.</p>
-        <audio controls preload="metadata">
-          <source src="../audio/quase-acerto.mp3" type="audio/mpeg">
-          <source src="../audio/quase-acerto.ogg" type="audio/ogg">
-          Seu navegador não toca áudio. <a href="../audio/quase-acerto.mp3">Baixe o arquivo do som</a>.
-        </audio>
-        <p class="texto-suave"><small>Repare no final: o tom de expectativa termina sem a resolução de uma vitória. É essa sensação de assunto inacabado que puxa a próxima rodada.</small></p>
 
         <details>
           <summary>Por que as máquinas mostram tantos quases</summary>

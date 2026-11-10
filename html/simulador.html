@@ -52,12 +52,24 @@
 
       <header class="abertura-pagina">
         <h1>Simulador de roleta</h1>
-        <p class="chamada">Dinheiro de mentira, matemática de verdade. Escolha quanto tem, quanto aposta e qual estratégia usar. Depois compare o resultado com o que a matemática previa.</p>
+        <p class="chamada">Dinheiro de mentira, matemática de verdade. Gire uma vez para sentir o jogo, ou escolha três coisas e jogue centenas de rodadas de uma vez.</p>
       </header>
+
+      <details class="tutorial">
+        <summary>Ver como usar, em 30 segundos</summary>
+        <div class="video-moldura">
+          <video controls muted playsinline preload="none" width="1280" height="720" poster="../img/poster-simulador.jpg">
+            <source src="../video/simulador.mp4" type="video/mp4">
+            <source src="../video/simulador.webm" type="video/webm">
+            Seu navegador não toca vídeo. <a href="../video/simulador.mp4">Baixe o vídeo</a>.
+          </video>
+        </div>
+        <p><small>Gravação de tela do próprio simulador.</small></p>
+      </details>
 
       <section class="largo" aria-label="Mesa da roleta">
         <div class="faixa" id="faixa-simulador"></div>
-        <p class="faixa-legenda" id="legenda-simulador" aria-live="polite">Gire uma vez para ver cada rodada, ou configure abaixo e jogue todas de uma vez.</p>
+        <p class="faixa-legenda" id="legenda-simulador" aria-live="polite">Cada giro aposta o valor escolhido no passo 1, do jeito escolhido nos passos 2 e 3.</p>
         <div class="acoes">
           <button class="botao" type="button" id="girar-uma">Girar uma vez</button>
         </div>
@@ -67,20 +79,19 @@
         <input type="hidden" name="versao" value="roleta-europeia-37-casas">
 
         <fieldset>
-          <legend>Seu dinheiro</legend>
+          <legend>1. Seu dinheiro</legend>
           <div class="campos-lado">
             <div class="campo">
-              <label for="saldo-inicial">Saldo inicial (R$)</label>
+              <label for="saldo-inicial">Você começa com (R$)</label>
               <input type="number" id="saldo-inicial" name="saldo-inicial" min="10" max="10000" step="10" value="500" required placeholder="Ex.: 500">
             </div>
             <div class="campo">
-              <label for="rodadas">Quantas rodadas</label>
+              <label for="rodadas">Quantas rodadas jogar de uma vez</label>
               <input type="number" id="rodadas" name="rodadas" min="1" max="500" value="100" required placeholder="Ex.: 100">
-              <small>Uma noite de cassino online passa fácil de 300 rodadas.</small>
             </div>
           </div>
           <div class="campo">
-            <label for="valor-aposta">Valor de cada aposta: <span class="valor-ao-vivo" id="mostra-valor">R$ 10,00</span></label>
+            <label for="valor-aposta">Cada aposta vale: <span class="valor-ao-vivo" id="mostra-valor">R$ 10,00</span></label>
             <input type="range" id="valor-aposta" name="valor-aposta" min="1" max="100" step="1" value="10" list="valores-comuns">
             <datalist id="valores-comuns">
               <option value="5"></option>
@@ -93,81 +104,69 @@
         </fieldset>
 
         <fieldset>
-          <legend>Sua aposta</legend>
+          <legend>2. Em que você aposta</legend>
           <ul class="opcoes">
             <li>
               <input type="radio" id="tipo-cor" name="tipo" value="cor" checked>
               <label for="tipo-cor">No vermelho</label>
-              <small>Ganha em 18 de 37 casas e recebe o dobro do que apostou.</small>
+              <small>Ganha quase metade das vezes e recebe o dobro.</small>
             </li>
             <li>
               <input type="radio" id="tipo-numero" name="tipo" value="numero">
               <label for="tipo-numero">Num número só</label>
-              <small>Ganha em 1 de 37 casas e recebe 36 vezes o que apostou.</small>
+              <small>Ganha raramente e recebe 36 vezes o valor.</small>
             </li>
           </ul>
-          <div class="campo">
-            <label for="numero-escolhido">Número escolhido (de 0 a 36)</label>
+          <div class="campo" id="campo-numero" hidden>
+            <label for="numero-escolhido">Qual número (de 0 a 36)</label>
             <input type="number" id="numero-escolhido" name="numero-escolhido" min="0" max="36" value="17" required placeholder="Ex.: 17">
           </div>
         </fieldset>
 
         <fieldset>
-          <legend>Sua estratégia</legend>
+          <legend>3. Como você aposta</legend>
           <ul class="opcoes">
             <li>
               <input type="radio" id="estrategia-fixa" name="estrategia" value="fixa" checked>
-              <label for="estrategia-fixa">Aposta fixa</label>
-              <small>Sempre o mesmo valor, sempre na mesma escolha.</small>
+              <label for="estrategia-fixa">Sempre igual</label>
+              <small>Mesmo valor, mesma escolha, toda rodada.</small>
             </li>
             <li>
               <input type="radio" id="estrategia-dobrar" name="estrategia" value="dobrar">
               <label for="estrategia-dobrar">Dobrar depois de perder</label>
-              <small>Conhecida como martingale. Volta ao valor inicial depois de cada vitória.</small>
+              <small>A estratégia "martingale": perdeu, dobra; ganhou, volta ao valor inicial.</small>
             </li>
             <li>
               <input type="radio" id="estrategia-seguir" name="estrategia" value="seguir">
-              <label for="estrategia-seguir">Seguir o resultado anterior</label>
-              <small>Aposta na cor ou no número que acabou de sair.</small>
+              <label for="estrategia-seguir">Seguir o que acabou de sair</label>
+              <small>Aposta na cor ou no número da rodada anterior.</small>
             </li>
           </ul>
-        </fieldset>
-
-        <fieldset>
-          <legend>Sua ficha</legend>
-          <div class="campo">
-            <label for="cor-ficha">Escolha a cor da sua ficha</label>
-            <input type="color" id="cor-ficha" name="cor-ficha" value="#c23b2e">
-            <small>Ela aparece quando você ganha e fica salva para a próxima visita. Deixar o jogador personalizar a mesa, o avatar ou a ficha é outra técnica de engajamento: o jogo passa a parecer seu.</small>
-          </div>
         </fieldset>
 
         <p class="erro-campo" id="erro-simulador" role="alert"></p>
 
         <div class="acoes">
-          <input class="botao" type="submit" value="Jogar todas as rodadas">
+          <input class="botao" type="submit" value="Jogar as rodadas">
           <input class="botao botao-secundario" type="reset" value="Recomeçar">
         </div>
       </form>
 
       <section class="resultado" id="resultado-simulador" hidden aria-live="polite">
         <h2>Resultado</h2>
+        <p class="frase-resultado" id="frase-resultado"></p>
         <p class="texto-suave">Saldo final</p>
         <span class="numero-grande" id="saldo-final">R$ 0,00</span>
         <p>
-          <label for="barra-saldo" class="texto-suave">Saldo comparado ao inicial (a barra cheia é o dobro do que você tinha)</label><br>
+          <label for="barra-saldo" class="texto-suave">Quanto sobrou do que você tinha (a barra cheia é o dobro)</label><br>
           <progress id="barra-saldo" max="100" value="50"></progress>
         </p>
         <p class="aviso" id="res-quebrou" hidden></p>
         <ul class="resumo">
-          <li>Rodadas jogadas<strong id="res-rodadas">0</strong></li>
-          <li>Total apostado<strong id="res-apostado">R$ 0,00</strong></li>
-          <li>Seu resultado<strong id="res-resultado">R$ 0,00</strong></li>
-          <li>Perda esperada pela matemática<strong id="res-esperado">R$ 0,00</strong></li>
+          <li>Rodadas<strong id="res-rodadas">0</strong></li>
           <li>Vitórias<strong id="res-vitorias">0</strong></li>
           <li>Quases<strong id="res-quases">0</strong></li>
         </ul>
-        <p class="fonte-dado">A perda esperada é 1/37 (2,7%) de tudo o que foi apostado. Numa sessão curta, a sorte pode ficar acima ou abaixo dela. Em muitas rodadas, o resultado sempre se aproxima dela.</p>
       </section>
 
       <section class="largo" aria-labelledby="titulo-rodadas">

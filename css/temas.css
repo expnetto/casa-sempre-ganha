@@ -1693,43 +1693,6 @@ html.cortina-fechada .cortina {
   }
 }
 
-.cadastro {
-  margin: 3rem 0;
-  padding: 1.5rem;
-  border-radius: 18px;
-  border: 2px solid var(--destaque);
-  background: linear-gradient(160deg, rgba(255, 194, 61, 0.12), transparent 60%), var(--painel);
-  box-shadow: 0 0 40px rgba(255, 194, 61, 0.15);
-}
-
-.cadastro-oferta {
-  position: relative;
-}
-
-.cadastro-oferta h2 {
-  margin-top: 0.5rem;
-}
-
-.cadastro-selo {
-  display: inline-block;
-  margin: 0;
-  padding: 0.2rem 0.9rem;
-  border-radius: 999px;
-  background: var(--destaque-2, var(--destaque));
-  color: #fff;
-  font-family: var(--fonte-titulo);
-  font-size: 1.1rem;
-  font-weight: 800;
-  transform: rotate(-4deg);
-}
-
-.cadastro form {
-  margin: 1.5rem 0 0;
-}
-
-.cadastro .resultado {
-  border-color: var(--destaque);
-}
 
 .comprovante {
   max-width: 26rem;
@@ -1920,4 +1883,23 @@ html.cortina-fechada .cortina {
 
 .revelacao p:last-child {
   margin-bottom: 0;
+}
+
+.frase-resultado {
+  font-size: 1.25rem;
+  line-height: 1.45;
+  margin-bottom: 1.5rem;
+}
+
+.tutorial {
+  margin: 0 0 2rem;
+}
+
+.tutorial .video-moldura {
+  margin: 1rem 1.1rem 0;
+}
+
+.copiar-extrato textarea {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 0.85rem;
 }

@@ -14,8 +14,8 @@ e sai com um plano de limites salvo no navegador.
 - **Problema:** as bets cresceram muito rápido no Brasil, e o material de conscientização costuma ser
   técnico demais ou só proibir.
 - **Público-alvo:** jovens e adultos que apostam ou convivem com alguém que aposta.
-- **Interação:** roleta, caça-níquel e multiplicador jogáveis, simulador, calculadora de gasto, um cadastro-armadilha
-  que revela as letras miúdas do bônus e, no fim, um extrato de tudo o que foi jogado mais um autoteste (PGSI).
+- **Interação:** roleta, caça-níquel e multiplicador jogáveis, simulador, calculadora de gasto e,
+  no fim, um extrato de tudo o que foi jogado mais um autoteste (PGSI).
 - **Linguagem visual:** cada página é um jogo diferente das bets, com cores, fontes, fundo animado e cursor
   próprios. Na página de ajuda o cassino desliga de propósito.
 
@@ -23,12 +23,12 @@ e sai com um plano de limites salvo no navegador.
 
 | Capítulo | Página | Jogo | O que tem |
 |---|---|---|---|
-| 1. Abertura | `index.html` | Lobby | Roleta jogável, holofotes, lâmpadas e o cadastro com bônus que revela o rollover |
+| 1. Abertura | `index.html` | Lobby | Roleta jogável, holofotes e lâmpadas |
 | 2. Por que prende | `html/mecanismos.html` | Pôquer | Os três mecanismos como cartas que correm de lado |
 | | `html/mecanismo-quase-ganhou.html` | Caça-níquel | Caça-níquel jogável e viciada em quases, com o som sincronizado ao último rolo |
-| | `html/mecanismo-reforco-variavel.html` | Multiplicador | Jogo de crash em canvas e vídeo do simulador |
+| | `html/mecanismo-reforco-variavel.html` | Multiplicador | Jogo de crash em canvas |
 | | `html/mecanismo-ilusao-controle.html` | Apostas esportivas | Placar de odds ao vivo e gráfico de saldos desenhado |
-| 3. Experimente | `html/simulador.html` | Roleta | Simulador com três estratégias; as lâmpadas apagam com o saldo |
+| 3. Experimente | `html/simulador.html` | Roleta | Simulador em três passos, vídeo tutorial e lâmpadas que apagam com o saldo |
 | 4. Quanto custa | `html/numeros.html` | Loteria | Contadores em bolas; calculadora com data de início e jogo preferido, total revelado numa raspadinha |
 | 5. E agora | `html/ajuda.html` | Fora do jogo | Comprovante com tudo o que foi jogado no site, autoteste PGSI e canais de apoio, sem efeitos |
 | Consulta | `html/glossario.html` | Bingo | Termos como bolas de bingo |
@@ -67,7 +67,7 @@ index.html
 html/      as outras 10 páginas
 css/       base.css, layout.css, componentes.css, temas.css
 js/        inicio.js, estado.js, nav.js, efeitos.js, cenas.js, roleta.js,
-           abertura.js, cadastro.js, simulador.js, calculadora.js, extrato.js
+           abertura.js, simulador.js, calculadora.js, extrato.js
 img/       imagens e pôster do vídeo
 audio/     som do quase acerto (mp3 e ogg)
 video/     gravação do simulador (mp4 e webm)

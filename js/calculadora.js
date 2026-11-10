@@ -28,22 +28,16 @@
     return porMes * (Math.pow(1 + JUROS_MES, meses) - 1) / JUROS_MES;
   }
 
-  function alugueis(valor, aluguel) {
-    const quantos = valor / aluguel;
-    return quantos.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + (quantos >= 2 ? " aluguéis" : " aluguel");
-  }
-
   function mesesDesde(dataISO) {
     const inicio = new Date(dataISO + "T00:00:00");
     return (Date.now() - inicio.getTime()) / 86400000 / DIAS_POR_MES;
   }
 
-  function validar(semanal, desde, meses, aluguel, renda) {
+  function validar(semanal, desde, meses, renda) {
     if (!(semanal > 0 && semanal <= 100000)) return "Informe quanto vai para apostas por semana (de R$ 1 a R$ 100.000).";
     if (!desde) return "Informe a data em que você começou a apostar.";
     if (!(meses >= 0)) return "A data de início não pode estar no futuro.";
     if (meses > 600) return "Escolha uma data nos últimos 50 anos.";
-    if (!(aluguel > 0)) return "Informe um valor de aluguel maior que zero.";
     if (renda < 0) return "A renda não pode ser negativa.";
     return "";
   }
@@ -77,10 +71,9 @@
     const semanal = Number(form.elements["gasto-semanal"].value);
     const desde = campoDesde.value;
     const meses = desde ? mesesDesde(desde) : NaN;
-    const aluguel = Number(form.elements["aluguel"].value);
     const renda = Number(form.elements["renda"].value || 0);
 
-    const mensagem = validar(semanal, desde, meses, aluguel, renda);
+    const mensagem = validar(semanal, desde, meses, renda);
     erro.textContent = mensagem;
     if (mensagem) return;
 
@@ -94,7 +87,6 @@
       const n = meses + p.extra;
       const saiu = porMes * n;
       document.getElementById("tab-" + p.id + "-total").textContent = formatarReais(saiu);
-      document.getElementById("tab-" + p.id + "-aluguel").textContent = alugueis(saiu, aluguel);
       document.getElementById("tab-" + p.id + "-guardado").textContent = formatarReais(guardado(porMes, n));
     });
     document.getElementById("tab-hoje-rotulo").textContent = "Até hoje (" + textoMeses(meses) + ")";

@@ -114,8 +114,8 @@
       <hr>
 
       <section aria-labelledby="titulo-calculadora">
-        <h2 id="titulo-calculadora">A sua conta</h2>
-        <p>Responda com o valor que realmente sai do seu bolso para as apostas: depósitos, recargas e Pix para as casas. Nada do que você digitar sai deste computador.</p>
+        <h2 id="titulo-calculadora">Agora, a sua conta</h2>
+        <p>Duas perguntas: quanto sai do seu bolso para apostas por semana e desde quando. Se você não aposta, pense em alguém que aposta. Nada do que você digitar sai deste computador.</p>
 
         <form id="form-calculadora" novalidate>
           <fieldset>
@@ -149,16 +149,10 @@
           </fieldset>
 
           <fieldset>
-            <legend>Para comparar</legend>
-            <div class="campos-lado">
-              <div class="campo">
-                <label for="aluguel">Quanto custa um aluguel na sua cidade (R$)</label>
-                <input type="number" id="aluguel" name="aluguel" min="1" max="100000" step="0.01" value="1200" required placeholder="Ex.: 1200">
-              </div>
-              <div class="campo">
-                <label for="renda">Sua renda por mês (R$), se quiser informar</label>
-                <input type="number" id="renda" name="renda" min="0" max="10000000" step="0.01" placeholder="Opcional">
-              </div>
+            <legend>Opcional</legend>
+            <div class="campo">
+              <label for="renda">Sua renda por mês (R$)</label>
+              <input type="number" id="renda" name="renda" min="0" max="10000000" step="0.01" placeholder="Para ver quanto da renda vai para apostas">
             </div>
           </fieldset>
 
@@ -189,31 +183,27 @@
               <thead>
                 <tr>
                   <th scope="col" rowspan="2">Período</th>
-                  <th scope="colgroup" colspan="2">Dinheiro que saiu para apostas</th>
-                  <th scope="col" rowspan="2">Se tivesse guardado a 10% ao ano</th>
+                  <th scope="colgroup" colspan="2">Dinheiro</th>
                 </tr>
                 <tr>
-                  <th scope="col">Em reais</th>
-                  <th scope="col">Em aluguéis</th>
+                  <th scope="col">Que saiu para apostas</th>
+                  <th scope="col">Se tivesse guardado a 10% ao ano</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row" id="tab-hoje-rotulo">Até hoje</th>
                   <td id="tab-hoje-total"></td>
-                  <td id="tab-hoje-aluguel"></td>
                   <td id="tab-hoje-guardado"></td>
                 </tr>
                 <tr>
                   <th scope="row">Mais 1 ano no mesmo ritmo</th>
                   <td id="tab-um-ano-total"></td>
-                  <td id="tab-um-ano-aluguel"></td>
                   <td id="tab-um-ano-guardado"></td>
                 </tr>
                 <tr>
                   <th scope="row">Mais 5 anos no mesmo ritmo</th>
                   <td id="tab-cinco-anos-total"></td>
-                  <td id="tab-cinco-anos-aluguel"></td>
                   <td id="tab-cinco-anos-guardado"></td>
                 </tr>
               </tbody>
@@ -227,7 +217,7 @@
       <hr>
 
       <section aria-labelledby="titulo-reportagem">
-        <h2 id="titulo-reportagem">Quem já passou por isso</h2>
+        <h2 id="titulo-reportagem">Uma reportagem para fechar</h2>
         <p>Reportagem da Rádio CBN sobre o efeito das apostas esportivas na saúde mental e nas finanças de quem aposta.</p>
         <div class="iframe-moldura">
           <iframe src="https://www.youtube-nocookie.com/embed/zncc665b21M" title="Reportagem da Rádio CBN: como apostas esportivas podem ser um pesadelo para a saúde mental e abalar finanças" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

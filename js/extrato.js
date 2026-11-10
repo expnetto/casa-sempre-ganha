@@ -56,11 +56,10 @@
       jogos.push({ nome: "Multiplicador", apostado: estado.crash.apostado, voltou: estado.crash.recebido, vantagem: VANTAGEM.multiplicador });
     }
 
-    const reflexao = document.getElementById("comprovante-reflexao");
-    reflexao.hidden = !estado.reflexao;
-    reflexao.textContent = estado.reflexao ? "Com esse dinheiro, eu: " + estado.reflexao : "";
-
-    if (!jogos.length && !estado.calculadora && !estado.maquina) return;
+    if (!jogos.length && !estado.calculadora && !estado.maquina) {
+      atualizarTexto();
+      return;
+    }
     const fragmento = document.createDocumentFragment();
 
     if (jogos.length) {
@@ -106,31 +105,41 @@
       fragmento.appendChild(paragrafo("Na vida real, você informou " + formatarReais(estado.calculadora.total) + " em apostas desde " + new Date(estado.calculadora.desde + "T00:00:00").toLocaleDateString("pt-BR") + ". Esse dinheiro não era de mentira.", "comprovante-destaque"));
     }
     corpo.replaceChildren(fragmento);
+    atualizarTexto();
   }
+
+  function atualizarTexto() {
+    const linhas = ["A CASA SEMPRE GANHA", "Comprovante de jogo", document.getElementById("comprovante-data").textContent, ""];
+    corpo.querySelectorAll("tr").forEach(function (tr) {
+      linhas.push(Array.from(tr.children).map(function (c) { return c.textContent; }).join(" | "));
+    });
+    corpo.querySelectorAll("p").forEach(function (p) {
+      linhas.push("", p.textContent);
+    });
+    document.getElementById("extrato-texto").value = linhas.join(String.fromCharCode(10));
+  }
+
+  document.getElementById("copiar-extrato").addEventListener("click", function () {
+    const campo = document.getElementById("extrato-texto");
+    const botao = this;
+    function avisar(texto) {
+      botao.textContent = texto;
+      setTimeout(function () { botao.textContent = "Copiar"; }, 1800);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(campo.value).then(function () { avisar("Copiado"); }, function () { campo.select(); avisar("Selecione e copie"); });
+    } else {
+      campo.select();
+      avisar("Texto selecionado: use Ctrl+C");
+    }
+  });
 
   document.getElementById("zerar-extrato").addEventListener("click", function () {
     if (!confirm("Apagar o extrato e as jogadas guardadas neste navegador?")) return;
-    ["abertura", "simulador", "crash", "maquina", "calculadora", "reflexao"].forEach(function (parte) {
+    ["abertura", "simulador", "crash", "maquina", "calculadora"].forEach(function (parte) {
       Estado.gravar(parte, null);
     });
     location.reload();
-  });
-
-  const formReflexao = document.getElementById("form-reflexao");
-  const campoReflexao = document.getElementById("reflexao");
-  campoReflexao.value = Estado.ler().reflexao || "";
-  formReflexao.addEventListener("submit", function (evento) {
-    evento.preventDefault();
-    const texto = campoReflexao.value.trim().slice(0, 300);
-    const erro = document.getElementById("erro-reflexao");
-    if (!texto) {
-      erro.textContent = "Escreva uma resposta antes de imprimir.";
-      return;
-    }
-    erro.textContent = "";
-    Estado.gravar("reflexao", texto);
-    desenharComprovante();
-    document.getElementById("comprovante").scrollIntoView({ block: "start" });
   });
 
   const lista = document.getElementById("perguntas");
