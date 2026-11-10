@@ -16,8 +16,13 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/componentes.css">
+    <link rel="stylesheet" href="../css/temas.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;display=swap">
+    <script src="../js/inicio.js"></script>
   </head>
-  <body>
+  <body data-tema="poker">
+    <div class="cortina" aria-hidden="true"><div class="cortina-listras"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="cortina-aviso"><span class="cortina-ficha"></span><p>Carregando</p><strong class="cortina-jogo"></strong></div></div>
+    <div class="preloader" aria-hidden="true"><div class="maquina-entrada"><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div></div><button class="preloader-pular" type="button" tabindex="-1">Pular</button></div>
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
     <div class="moldura">
       <header class="lateral">
@@ -48,7 +53,7 @@
 
       <header class="abertura-pagina" id="topo">
         <h1>Por que prende</h1>
-        <p class="chamada">Uma bet não precisa enganar ninguém sobre as chances. Ela só precisa usar três coisas que o cérebro humano já faz sozinho.</p>
+        <p class="chamada">Uma bet não precisa enganar ninguém sobre as chances. Ela só precisa usar três coisas que o cérebro humano já faz sozinho. São as três cartas desta mão.</p>
       </header>
 
       <article>
@@ -65,8 +70,9 @@
           <cite>B. F. Skinner, <i>Science and Human Behavior</i>, 1953 (tradução livre)</cite>
         </blockquote>
 
+        <div class="pista-horizontal largo" id="pista-mecanismos">
         <ol class="mecanismos-lista">
-          <li id="quase" data-revelar>
+          <li id="quase" class="carta vermelha" data-valor="A" data-naipe="♥">
             <img src="../img/quase-ganhou.png" width="900" height="600" alt="Faixa de casas da roleta: a aposta no 17 e a bolinha parada no 34, a casa vizinha.">
             <div>
               <h3>O quase ganhou</h3>
@@ -74,7 +80,7 @@
               <p><a href="mecanismo-quase-ganhou.html">Ver o quase ganhou</a></p>
             </div>
           </li>
-          <li id="reforco" data-revelar>
+          <li id="reforco" class="carta" data-valor="K" data-naipe="♠">
             <img src="../img/reforco-variavel.png" width="900" height="600" alt="Duas linhas do tempo: na de cima o prêmio vem sempre na quinta tentativa; na de baixo os prêmios aparecem em momentos imprevisíveis.">
             <div>
               <h3>O prêmio que pode vir a qualquer hora</h3>
@@ -82,7 +88,7 @@
               <p><a href="mecanismo-reforco-variavel.html">Ver o reforço variável</a></p>
             </div>
           </li>
-          <li id="controle" data-revelar>
+          <li id="controle" class="carta vermelha" data-valor="Q" data-naipe="♦">
             <img src="../img/estrategias.png" width="900" height="600" alt="Gráfico de barras com o resultado médio de vinte mil jogadores para cada estratégia: todas perdem cerca de 2,7% do que apostaram.">
             <div>
               <h3>A ilusão de controle</h3>
@@ -91,6 +97,7 @@
             </div>
           </li>
         </ol>
+        </div>
 
         <a class="topo" href="#topo">Voltar ao topo</a>
       </article>
@@ -106,8 +113,13 @@
         <p><small>Nenhum dinheiro de verdade é usado neste site e nada do que você digita sai do seu navegador. Se apostar deixou de ser diversão, ligue <a href="tel:188">188</a> (CVV) ou veja a página <a href="ajuda.html">E agora</a>.</small></p>
       </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
     <script src="../js/estado.js"></script>
     <script src="../js/nav.js"></script>
-    <script src="../js/revelar.js"></script>
+    <script src="../js/efeitos.js"></script>
+    <script src="../js/cenas.js"></script>
   </body>
 </html>

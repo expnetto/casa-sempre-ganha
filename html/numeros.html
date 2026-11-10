@@ -16,8 +16,13 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/componentes.css">
+    <link rel="stylesheet" href="../css/temas.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&amp;display=swap">
+    <script src="../js/inicio.js"></script>
   </head>
-  <body>
+  <body data-tema="loteria">
+    <div class="cortina" aria-hidden="true"><div class="cortina-listras"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="cortina-aviso"><span class="cortina-ficha"></span><p>Carregando</p><strong class="cortina-jogo"></strong></div></div>
+    <div class="preloader" aria-hidden="true"><div class="maquina-entrada"><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div></div><button class="preloader-pular" type="button" tabindex="-1">Pular</button></div>
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
     <div class="moldura">
       <header class="lateral">
@@ -53,6 +58,11 @@
 
       <section aria-labelledby="titulo-brasil">
         <h2 id="titulo-brasil">O Brasil nas bets</h2>
+        <ul class="bolas-numeros">
+          <li><span class="bola-loteria" style="--c:#2450c7"><strong data-contar="25.2" data-formato="mi">25,2 mi</strong></span>pessoas apostaram em 2025</li>
+          <li><span class="bola-loteria" style="--c:#f2a900"><strong data-contar="220.6" data-formato="bi">R$ 220,6 bi</strong></span>depositados nas bets em 2025</li>
+          <li><span class="bola-loteria" style="--c:#d6336c"><strong data-contar="37" data-formato="bi">R$ 37 bi</strong></span>ficaram com as empresas</li>
+        </ul>
         <p>Os números abaixo vêm de três fontes oficiais. Cada uma mede uma coisa diferente: a pesquisa do Senado pergunta às pessoas, o Banco Central olha as transferências por Pix e a Secretaria de Prêmios e Apostas recebe os dados das próprias empresas autorizadas.</p>
 
         <div class="tabela-rolagem">
@@ -145,7 +155,10 @@
 
         <section class="resultado" id="resultado-calculadora" hidden aria-live="polite">
           <h3>Até hoje, saíram</h3>
-          <span class="numero-grande negativo" id="total-gasto">R$ 0,00</span>
+          <p class="raspadinha-dica" id="raspadinha-dica" hidden>Raspe com o mouse ou com o dedo para ver o total.</p>
+          <div class="raspadinha" id="raspadinha">
+            <span class="numero-grande negativo" id="total-gasto">R$ 0,00</span>
+          </div>
           <p>Isso dá <strong id="por-mes">R$ 0,00</strong> por mês.</p>
 
           <p hidden>
@@ -216,8 +229,14 @@
         <p><small>Nenhum dinheiro de verdade é usado neste site e nada do que você digita sai do seu navegador. Se apostar deixou de ser diversão, ligue <a href="tel:188">188</a> (CVV) ou veja a página <a href="ajuda.html">E agora</a>.</small></p>
       </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
     <script src="../js/estado.js"></script>
     <script src="../js/nav.js"></script>
+    <script src="../js/efeitos.js"></script>
     <script src="../js/calculadora.js"></script>
+    <script src="../js/cenas.js"></script>
   </body>
 </html>

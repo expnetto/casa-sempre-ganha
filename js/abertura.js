@@ -30,6 +30,7 @@
       });
       let texto = "Deu " + numero + " " + Roleta.nomeCor(numero) + ". ";
       if (ganhou) texto += "Você ganhou R$ 10. Dá vontade de girar de novo, não dá?";
+      if (ganhou && typeof Cassino !== "undefined") Cassino.chuva("ficha", 10);
       else if (quase) texto += "Perdeu, e o vermelho estava na casa do lado.";
       else texto += "Perdeu R$ 10.";
       legenda.textContent = texto;

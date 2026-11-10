@@ -16,8 +16,13 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/componentes.css">
+    <link rel="stylesheet" href="../css/temas.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&amp;display=swap">
+    <script src="../js/inicio.js"></script>
   </head>
-  <body>
+  <body data-tema="bastidores">
+    <div class="cortina" aria-hidden="true"><div class="cortina-listras"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="cortina-aviso"><span class="cortina-ficha"></span><p>Carregando</p><strong class="cortina-jogo"></strong></div></div>
+    <div class="preloader" aria-hidden="true"><div class="maquina-entrada"><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div></div><button class="preloader-pular" type="button" tabindex="-1">Pular</button></div>
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
     <div class="moldura">
       <header class="lateral">
@@ -56,17 +61,32 @@
         <p><strong>O problema:</strong> as apostas online cresceram muito rápido no Brasil, e o material de conscientização costuma ser técnico demais ou só dizer “não aposte”. Quem já aposta não se convence com isso.</p>
         <p><strong>Para quem é:</strong> jovens e adultos que apostam ou conhecem alguém que aposta.</p>
         <p><strong>A proposta:</strong> em vez de sermão, deixar a pessoa ver o mecanismo funcionando numa roleta de mentira, fazer a conta com os próprios números e sair com um plano de limites salvo no navegador.</p>
+        <p><strong>A linguagem visual:</strong> cada página é um jogo diferente das bets brasileiras, com cores, tipografia, fundo animado e até o cursor do mouse próprios: lobby de cassino, pôquer, caça-níquel, multiplicador, apostas esportivas, roleta, loteria, bingo, dados e os bastidores. A única página sem nada disso é a de ajuda, onde o cassino desliga de propósito.</p>
       </section>
 
       <section aria-labelledby="titulo-navegacao">
         <h2 id="titulo-navegacao">Como a navegação foi destacada</h2>
-        <p>A mudança de página aparece em três lugares, todos feitos sem biblioteca:</p>
+        <p>A mudança de página aparece em três lugares:</p>
         <ol>
           <li><strong>Menu lateral em todas as páginas</strong>, com a página atual marcada pela cor de destaque. Em telas pequenas, ele vira um botão Menu no topo.</li>
           <li><strong>Trilha de capítulos</strong> no alto de cada página, mostrando em qual dos cinco capítulos você está e quais já passaram.</li>
-          <li><strong>Transição entre páginas</strong>: ao clicar num link, o conteúdo sai deslizando e a próxima página entra pelo lado oposto. Avançar na jornada desliza para a esquerda, voltar desliza para a direita, como virar páginas. Quem configurou o sistema para reduzir movimento recebe só um esmaecimento.</li>
+          <li><strong>Tela de carregamento entre os jogos</strong>: ao clicar num link, listras nas cores do próximo jogo descem e cobrem a tela, com o aviso “Carregando” e o nome do jogo, como nos aplicativos de aposta. Na página nova, as listras sobem e revelam o conteúdo. Avançar na jornada varre da esquerda para a direita; voltar varre ao contrário.</li>
         </ol>
-        <p>A transição usa só CSS (<i lang="en">keyframes</i>) e algumas linhas de JavaScript no arquivo <b>js/nav.js</b>: o script intercepta o clique, adiciona a classe de saída, espera 180 milissegundos e então troca de página. Sem JavaScript, os links continuam funcionando normalmente.</p>
+        <p>Como a transição atravessa duas páginas diferentes, ela é feita em duas metades. Na página de saída, o <b>js/nav.js</b> intercepta o clique, pede ao <b>js/efeitos.js</b> para fechar a cortina e só então troca de endereço. Antes, ele grava no <i lang="en">sessionStorage</i> que a cortina está fechada. Na página de chegada, o pequeno <b>js/inicio.js</b>, carregado no <b>head</b>, lê essa marca e já desenha a cortina fechada antes da primeira pintura da tela, para o conteúdo não piscar. Depois, o efeitos.js abre a cortina.</p>
+        <p>Sem a biblioteca de animação, a troca de página volta a ser um deslizamento feito só com CSS. Sem JavaScript, os links funcionam normalmente. Quem configurou o sistema para reduzir movimento recebe só um esmaecimento.</p>
+      </section>
+
+      <section aria-labelledby="titulo-bibliotecas">
+        <h2 id="titulo-bibliotecas">As bibliotecas e o que cada uma faz</h2>
+        <p>A base do site é HTML, CSS e JavaScript escritos à mão. Por cima dela, duas bibliotecas, o GSAP (com três plugins) e o Lenis, carregadas por <abbr title="Content Delivery Network, rede de distribuição de conteúdo">CDN</abbr>:</p>
+        <ul>
+          <li><strong>GSAP</strong>: anima propriedades ao longo do tempo, como posição, rotação e opacidade. Faz as cortinas, o preloader, as fichas caindo e os botões que puxam o mouse.</li>
+          <li><strong>ScrollTrigger</strong>, plugin do GSAP: transforma a posição da rolagem num número de 0 a 1 e usa esse número para avançar uma animação. Faz a caça-níquel, a faixa da roleta, as cartas correndo de lado e as linhas de saldo.</li>
+          <li><strong>SplitText</strong>, plugin do GSAP: separa um título em linhas ou palavras, para cada uma entrar separadamente.</li>
+          <li><strong>DrawSVG</strong>, plugin do GSAP, só na página de apostas esportivas: desenha as linhas do gráfico de saldo como se fossem traçadas à mão.</li>
+          <li><strong>Lenis</strong>: deixa a rolagem do mouse suave, como em aplicativo.</li>
+        </ul>
+        <p>Todo o resto é código próprio: a roleta e o sorteio, o jogo do multiplicador desenhado em <b>canvas</b>, a raspadinha, as lâmpadas que apagam com o saldo, as odds que mudam ao vivo, o letreiro de LED e as cores de cada jogo, feitas com variáveis CSS.</p>
       </section>
 
       <section class="largo" aria-labelledby="titulo-usei">
@@ -85,57 +105,57 @@
               <tr>
                 <th scope="row">Todas</th>
                 <td>header, nav, main, section, article, aside, footer, meta charset, content-language, author, keywords, description, viewport, br, hr</td>
-                <td>3 arquivos CSS externos, variáveis no :root, Google Fonts, :hover no menu, transição entre páginas</td>
+                <td>4 arquivos CSS externos, variáveis CSS por tema, Google Fonts, :hover no menu, tela de carregamento entre páginas, letreiro de LED, cursor do jogo da página</td>
               </tr>
               <tr>
                 <th scope="row"><a href="../index.html">Início</a></th>
                 <td>h1, figure, figcaption, img, ul, button</td>
-                <td>Roleta interativa com 100 reais de mentira</td>
+                <td>Lobby: roleta gigante girando, holofotes, lâmpadas e fichas que seguem o mouse</td>
               </tr>
               <tr>
                 <th scope="row"><a href="mecanismos.html">Por que prende</a></th>
                 <td>blockquote, cite, mark, ol, âncoras internas (#topo)</td>
-                <td>Revelação dos itens ao rolar a página (IntersectionObserver)</td>
+                <td>Pôquer: os três mecanismos são cartas que correm de lado na rolagem</td>
               </tr>
               <tr>
                 <th scope="row"><a href="mecanismo-quase-ganhou.html">O quase ganhou</a></th>
                 <td>audio, source, details, summary, em, strong</td>
-                <td>A única cena com GSAP e ScrollTrigger, que funciona sem a biblioteca</td>
+                <td>Caça-níquel: duas cenas presas à rolagem e o texto revelado palavra por palavra</td>
               </tr>
               <tr>
                 <th scope="row"><a href="mecanismo-reforco-variavel.html">Reforço variável</a></th>
                 <td>video com controls, autoplay, muted, loop e poster, source</td>
-                <td>Vídeo gravado do próprio simulador</td>
+                <td>Multiplicador: jogo de crash em canvas e vídeo gravado do próprio simulador</td>
               </tr>
               <tr>
                 <th scope="row"><a href="mecanismo-ilusao-controle.html">Ilusão de controle</a></th>
                 <td>del, ins, blockquote, cite, details</td>
-                <td>Gráfico gerado a partir de vinte mil jogadores simulados</td>
+                <td>Apostas esportivas: placar de odds ao vivo e gráfico de saldos desenhado com DrawSVG</td>
               </tr>
               <tr>
                 <th scope="row"><a href="simulador.html">Simulador</a></th>
                 <td>form, fieldset, legend, label, input range, number, radio, checkbox, hidden, submit, reset, button, datalist, table, progress</td>
-                <td>Math.random, laço de rodadas, tabela montada pelo JavaScript, saldo salvo no localStorage</td>
+                <td>Roleta: Math.random, laço de rodadas, tabela montada pelo JavaScript e lâmpadas que apagam com o saldo</td>
               </tr>
               <tr>
                 <th scope="row"><a href="numeros.html">Quanto custa</a></th>
                 <td>table com rowspan e colspan, abbr, sup, sub, meter, iframe, required, placeholder, min, max</td>
-                <td>Calculadora de gasto com juros compostos</td>
+                <td>Loteria: contadores em bolas e o total revelado numa raspadinha em canvas</td>
               </tr>
               <tr>
                 <th scope="row"><a href="ajuda.html">E agora</a></th>
                 <td>input text, password, email, date, color, select, optgroup, textarea, progress, link tel:</td>
-                <td>Plano de limites salvo no localStorage, cor do site trocada por variável CSS</td>
+                <td>Fora do jogo: página clara, sem efeitos, plano de limites salvo no localStorage</td>
               </tr>
               <tr>
                 <th scope="row"><a href="glossario.html">Glossário</a></th>
                 <td>details, summary, abbr, b, i, u, big, small, del, ins</td>
-                <td>Comparação entre tags de aparência e tags de significado</td>
+                <td>Bingo: cada termo é uma bola numerada com contador CSS</td>
               </tr>
               <tr>
                 <th scope="row"><a href="fontes.html">Fontes</a></th>
                 <td>ol com start, cite, links externos com target</td>
-                <td>Nenhum script específico</td>
+                <td>Dados: números das referências em forma de dado e dados 3D girando ao fundo</td>
               </tr>
             </tbody>
           </table>
@@ -149,8 +169,12 @@
           <p>O conteúdo da disciplina é HTML, CSS e JavaScript. Usar só isso deixa cada linha explicável e faz o site abrir direto do arquivo, sem instalar nada.</p>
         </details>
         <details>
-          <summary>Por que a transição não usa GSAP</summary>
-          <p>Uma animação feita com biblioteca termina quando o navegador descarrega a página. Para animar a troca entre dois arquivos HTML, é preciso animar a saída numa página e a entrada na outra, e isso é CSS puro. O GSAP aparece só numa cena, na página do quase ganhou, e o site continua completo sem ele.</p>
+          <summary>E se as bibliotecas não carregarem</summary>
+          <p>Todo efeito confere se a biblioteca existe antes de rodar. Sem o GSAP, o conteúdo, os formulários, as tabelas e a navegação continuam funcionando; somem só as animações. As cenas presas à rolagem mostram direto o estado final, e a troca de página volta a ser o deslizamento em CSS.</p>
+        </details>
+        <details>
+          <summary>Como cada página ganhou um tema</summary>
+          <p>O <b>body</b> de cada página tem um atributo, por exemplo <b>data-tema="poker"</b>. O arquivo <b>css/temas.css</b> redefine as variáveis de cor e de fonte para cada tema, e o resto do CSS só usa as variáveis. Por isso, trocar o tema de uma página é trocar uma palavra no HTML.</p>
         </details>
         <details>
           <summary>Como os dados ficam salvos</summary>
@@ -185,7 +209,13 @@
         <p><small>Nenhum dinheiro de verdade é usado neste site e nada do que você digita sai do seu navegador. Se apostar deixou de ser diversão, ligue <a href="tel:188">188</a> (CVV) ou veja a página <a href="ajuda.html">E agora</a>.</small></p>
       </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
     <script src="../js/estado.js"></script>
     <script src="../js/nav.js"></script>
+    <script src="../js/efeitos.js"></script>
+    <script src="../js/cenas.js"></script>
   </body>
 </html>

@@ -8,15 +8,14 @@
   border-radius: 999px;
   border: 2px solid var(--destaque);
   background: var(--destaque);
-  color: var(--feltro);
+  color: var(--texto-botao);
   text-decoration: none;
   cursor: pointer;
   transition: transform 100ms ease-out, background-color 120ms ease;
 }
 
 .botao:hover {
-  background: #f0bd55;
-  border-color: #f0bd55;
+  filter: brightness(1.12);
 }
 
 .botao:active {
@@ -30,7 +29,7 @@
 }
 
 .botao-secundario:hover {
-  background: rgba(239, 232, 216, 0.07);
+  background: var(--tinta-leve);
   border-color: var(--giz-fraco);
 }
 
@@ -136,7 +135,7 @@
   padding: 1.25rem;
   border: 1px solid var(--linha);
   border-radius: 10px;
-  background: rgba(10, 31, 26, 0.55);
+  background: var(--painel);
 }
 
 .mesa p:first-child {
@@ -209,7 +208,7 @@ details {
   margin: 1.5rem 0;
   border: 1px solid var(--linha);
   border-radius: var(--raio);
-  background: rgba(239, 232, 216, 0.03);
+  background: var(--tinta-leve);
 }
 
 summary {
@@ -330,11 +329,11 @@ textarea {
   max-width: 24rem;
   font: inherit;
   color: var(--giz);
-  background: rgba(0, 0, 0, 0.22);
-  border: 1px solid rgba(239, 232, 216, 0.3);
+  background: var(--campo-fundo);
+  border: 1px solid var(--linha-forte);
   border-radius: var(--raio);
   padding: 0.6rem 0.75rem;
-  color-scheme: dark;
+  color-scheme: var(--esquema);
 }
 
 textarea {
@@ -424,7 +423,7 @@ input[type="checkbox"] {
   padding: 1.5rem;
   border-radius: 10px;
   border: 1px solid var(--linha);
-  background: rgba(10, 31, 26, 0.6);
+  background: var(--painel);
 }
 
 .resultado[hidden] {
@@ -699,7 +698,7 @@ audio {
   width: 100%;
   max-width: 28rem;
   margin: 0.5rem 0;
-  color-scheme: dark;
+  color-scheme: var(--esquema);
 }
 
 .mito-fato {

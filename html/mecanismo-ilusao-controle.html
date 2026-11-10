@@ -16,8 +16,13 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/componentes.css">
+    <link rel="stylesheet" href="../css/temas.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&amp;display=swap">
+    <script src="../js/inicio.js"></script>
   </head>
-  <body>
+  <body data-tema="futebol">
+    <div class="cortina" aria-hidden="true"><div class="cortina-listras"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="cortina-aviso"><span class="cortina-ficha"></span><p>Carregando</p><strong class="cortina-jogo"></strong></div></div>
+    <div class="preloader" aria-hidden="true"><div class="maquina-entrada"><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div></div><button class="preloader-pular" type="button" tabindex="-1">Pular</button></div>
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
     <div class="moldura">
       <header class="lateral">
@@ -61,6 +66,24 @@
 
         <p>As bets trabalham essa sensação o tempo todo: telas com estatísticas, “dicas” de influenciadores, botões para escolher o próprio palpite. Tudo isso faz a aposta parecer uma questão de <strong>habilidade</strong>. Na roleta, ela é só uma questão de <strong>tempo</strong>.</p>
 
+        <section class="placar-odds" aria-labelledby="titulo-odds">
+          <div class="placar-topo"><span id="titulo-odds">Rodada de hoje</span><span class="placar-ao-vivo">Ao vivo</span></div>
+          <div class="tabela-rolagem">
+            <table border="1">
+              <caption class="oculto">Cotações fictícias de jogos fictícios</caption>
+              <thead>
+                <tr><th scope="col">Jogo</th><th scope="col">Casa</th><th scope="col">Empate</th><th scope="col">Fora</th><th scope="col">Soma das chances</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Atlético do Vale × Unidos da Serra</th><td class="odd" data-p="0.45">2,10</td><td class="odd" data-p="0.28">3,40</td><td class="odd" data-p="0.27">3,50</td><td class="margem">105%</td></tr>
+                <tr><th scope="row">Real Litoral × Operário Norte</th><td class="odd" data-p="0.55">1,72</td><td class="odd" data-p="0.25">3,80</td><td class="odd" data-p="0.20">4,75</td><td class="margem">105%</td></tr>
+                <tr><th scope="row">Esporte Central × Ferroviário</th><td class="odd" data-p="0.36">2,65</td><td class="odd" data-p="0.30">3,15</td><td class="odd" data-p="0.34">2,80</td><td class="margem">105%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <p>Times e jogos inventados. As cotações mudam sozinhas, como nas apostas ao vivo. Repare na última coluna: somando as chances que cada cotação sugere (1 dividido pela cotação), o total passa de 100%. Essa sobra é a margem da casa, e ela está em todo jogo, não importa em quem você aposte.</p>
+
         <h2>Mito e fato</h2>
         <ul class="mito-fato">
           <li>
@@ -80,6 +103,18 @@
         <figure>
           <img src="../img/estrategias.png" width="900" height="600" alt="Gráfico de barras com o resultado médio de vinte mil jogadores simulados para cada estratégia, depois de 200 rodadas de R$ 10: aposta fixa, dobrar após perder e seguir a cor anterior. Todas terminam no negativo, perto de 2,7% do total apostado.">
           <figcaption>Vinte mil jogadores simulados para cada estratégia, 200 rodadas cada. As barras mostram quanto cada estratégia perdeu, em média, a cada R$ 100 apostados. Nenhuma escapa da vantagem da casa.</figcaption>
+        </figure>
+
+        <h2>Três estratégias, uma noite</h2>
+        <p>Uma partida simulada: três jogadores começam com R$ 1.000 na roleta e apostam R$ 10 no vermelho, cada um com a sua estratégia. Role a página para ver o saldo de cada um, rodada por rodada.</p>
+        <figure class="grafico-saldos" id="grafico-estrategias">
+          <svg viewBox="0 0 800 360" role="img" aria-label="Linhas de saldo de três estratégias ao longo de 200 rodadas. Nenhuma termina acima do saldo inicial."></svg>
+          <ul class="legenda-saldos">
+            <li style="--c:#ffffff">Aposta fixa</li>
+            <li style="--c:#ff5c5c">Dobrar depois de perder</li>
+            <li style="--c:#ffd400">Seguir a cor anterior</li>
+          </ul>
+          <figcaption>A linha tracejada é o saldo inicial. Quem dobra depois de perder sobe devagar e cai de uma vez.</figcaption>
         </figure>
 
         <details>
@@ -111,7 +146,14 @@
         <p><small>Nenhum dinheiro de verdade é usado neste site e nada do que você digita sai do seu navegador. Se apostar deixou de ser diversão, ligue <a href="tel:188">188</a> (CVV) ou veja a página <a href="ajuda.html">E agora</a>.</small></p>
       </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
     <script src="../js/estado.js"></script>
     <script src="../js/nav.js"></script>
+    <script src="../js/efeitos.js"></script>
+    <script src="../js/cenas.js"></script>
   </body>
 </html>

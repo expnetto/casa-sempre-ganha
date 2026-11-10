@@ -154,6 +154,7 @@
       rodadas: s.linhas.length,
       data: new Date().toISOString()
     });
+    if (typeof Cassino !== "undefined") Cassino.luzes(s.saldo / s.config.saldoInicial);
     const lateral = document.querySelector(".saldo-lateral");
     if (lateral) {
       lateral.querySelector("strong").textContent = formatarReais(s.saldo);
@@ -218,6 +219,14 @@
       texto += " Saldo: " + formatarReais(linha.saldo) + ".";
       legenda.textContent = texto;
       desenharResumo();
+      if (typeof Cassino !== "undefined") {
+        if (linha.ganhou) Cassino.chuva("ficha", linha.alvo === "vermelha" || linha.alvo === "preta" ? 8 : 24);
+        else if (linha.quase) {
+          faixa.classList.remove("treme");
+          void faixa.offsetWidth;
+          faixa.classList.add("treme");
+        }
+      }
     });
   });
 
