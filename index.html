@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="sem-js">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-language" content="pt-br">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Eraldo Xavier Pimentel Netto">
+    <meta name="keywords" content="apostas online, bets, roleta, vantagem da casa, vício em jogo">
+    <meta name="description" content="Site que mostra, com um simulador de roleta e uma calculadora, por que as apostas online prendem e quanto elas custam.">
+    <meta name="theme-color" content="#0f2b24">
+    <title>A casa sempre ganha</title>
+    <link rel="icon" type="image/png" href="img/icone.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,700;1,400&amp;family=Big+Shoulders+Display:wght@700;800&amp;display=swap">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/componentes.css">
+  </head>
+  <body>
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+    <div class="moldura">
+      <header class="lateral">
+        <a class="marca" href="index.html">A casa<br>sempre ganha</a>
+        <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav id="menu" class="menu" aria-label="Todas as páginas">
+      <ol class="menu-capitulos">
+      <li><span class="menu-capitulo">Abertura</span><ul><li><a href="index.html" aria-current="page">Início</a></li></ul></li>
+      <li><span class="menu-capitulo">Por que prende</span><ul><li><a href="html/mecanismos.html">Os três mecanismos</a></li><li><a href="html/mecanismo-quase-ganhou.html">O quase ganhou</a></li><li><a href="html/mecanismo-reforco-variavel.html">Reforço variável</a></li><li><a href="html/mecanismo-ilusao-controle.html">Ilusão de controle</a></li></ul></li>
+      <li><span class="menu-capitulo">Experimente</span><ul><li><a href="html/simulador.html">Simulador de roleta</a></li></ul></li>
+      <li><span class="menu-capitulo">Quanto custa</span><ul><li><a href="html/numeros.html">Calculadora de gasto</a></li></ul></li>
+      <li><span class="menu-capitulo">E agora</span><ul><li><a href="html/ajuda.html">Plano de limites e apoio</a></li></ul></li>
+      </ol>
+      <p class="menu-consulta">Consulta</p>
+      <ul><li><a href="html/glossario.html">Glossário</a></li><li><a href="html/fontes.html">Fontes</a></li><li><a href="html/sobre.html">Sobre o projeto</a></li></ul>
+      </nav>
+        <p class="saldo-lateral" hidden>Seu saldo no simulador: <strong>R$ 0,00</strong></p>
+      </header>
+
+      <main id="conteudo" class="conteudo">
+      <ol class="trilha">
+        <li class="atual"><a href="index.html" aria-current="step">1<span class="trilha-nome">. Abertura</span></a></li>
+        <li><a href="html/mecanismos.html">2<span class="trilha-nome">. Por que prende</span></a></li>
+        <li><a href="html/simulador.html">3<span class="trilha-nome">. Experimente</span></a></li>
+        <li><a href="html/numeros.html">4<span class="trilha-nome">. Quanto custa</span></a></li>
+        <li><a href="html/ajuda.html">5<span class="trilha-nome">. E agora</span></a></li>
+      </ol>
+
+      <section class="abertura largo" aria-labelledby="titulo-abertura">
+        <h1 id="titulo-abertura">A casa<br>sempre ganha</h1>
+        <p class="chamada">Ninguém entra numa bet achando que vai perder. Este site mostra, com uma roleta de mentira e os seus próprios números, por que a conta nunca fecha para quem aposta.</p>
+
+        <div class="mesa">
+          <p>Você tem <strong>R$ 100 de mentira</strong>. Cada giro aposta R$ 10 no vermelho. Se der vermelho, você recebe R$ 20.</p>
+          <div class="faixa" id="faixa-abertura"></div>
+          <p class="faixa-legenda" id="legenda-abertura" aria-live="polite"></p>
+          <div class="acoes">
+            <button class="botao" id="girar-abertura" type="button" hidden>Girar a roleta</button>
+            <span class="placar" id="placar-abertura">Rodadas: 0. Saldo: R$ 100,00.</span>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <section aria-labelledby="titulo-por-que">
+        <h2 id="titulo-por-que">Por que isso existe</h2>
+        <p>Em 2024, uma pesquisa do Senado estimou que <strong>22 milhões de brasileiros</strong> tinham apostado em bets no mês anterior. Em 2025, o primeiro ano do mercado regulado, as casas autorizadas receberam mais de <strong>R$ 220 bilhões</strong> em depósitos e ficaram com cerca de R$ 37 bilhões.</p>
+        <p>O material que existe sobre o assunto costuma ser técnico demais ou só proibir. Aqui a ideia é outra: deixar você ver o mecanismo funcionando, e depois fazer a conta com os seus números.</p>
+
+        <figure>
+          <img src="img/roda.png" width="1200" height="800" alt="Ilustração de uma roleta europeia vista de cima, com 37 casas: 18 vermelhas, 18 pretas e uma verde, o zero.">
+          <figcaption>A roleta europeia tem 37 casas. A única verde, o zero, não é de nenhum apostador: é ela que garante a vantagem da casa.</figcaption>
+        </figure>
+      </section>
+
+      <section aria-labelledby="titulo-ferramentas">
+        <h2 id="titulo-ferramentas">O que dá para fazer aqui</h2>
+        <ul class="ferramentas">
+          <li>
+            <h3><a href="html/simulador.html">Simulador</a></h3>
+            <p>Jogue centenas de rodadas em segundos, com três estratégias diferentes, e veja o saldo de cada uma.</p>
+          </li>
+          <li>
+            <h3><a href="html/numeros.html">Calculadora</a></h3>
+            <p>Diga quanto vai para apostas por semana e há quanto tempo. Ela mostra o total em reais, em aluguéis e no que esse dinheiro teria virado guardado.</p>
+          </li>
+          <li>
+            <h3><a href="html/ajuda.html">Plano de limites</a></h3>
+            <p>Defina um teto e uma data de início. O plano fica salvo neste navegador e, quando você voltar, mostra em que dia está e quanto já usou.</p>
+          </li>
+        </ul>
+        <p><a class="botao" href="html/mecanismos.html">Começar pelo capítulo 2: por que prende</a></p>
+      </section>
+
+      <nav class="proxima" aria-label="Próxima página">
+        <p>Próxima página</p>
+        <a href="html/mecanismos.html">Por que prende</a>
+      </nav>
+      </main>
+
+      <footer class="rodape">
+        <p>Projeto final de Desenvolvimento Front-End para Web, UNIPÊ, 2026.<br>Eraldo Xavier Pimentel Netto.</p>
+        <p><small>Nenhum dinheiro de verdade é usado neste site e nada do que você digita sai do seu navegador. Se apostar deixou de ser diversão, ligue <a href="tel:188">188</a> (CVV) ou veja a página <a href="html/ajuda.html">E agora</a>.</small></p>
+      </footer>
+    </div>
+    <script src="js/estado.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/roleta.js"></script>
+    <script src="js/abertura.js"></script>
+  </body>
+</html>
