@@ -71,6 +71,14 @@
 
     painel.hidden = false;
     painel.scrollIntoView({ block: "start" });
+    if (typeof Raspadinha !== "undefined") {
+      const dica = document.getElementById("raspadinha-dica");
+      dica.hidden = false;
+      Raspadinha.cobrir(document.getElementById("raspadinha"), function () {
+        dica.hidden = true;
+        if (typeof Cassino !== "undefined") Cassino.chuva("nota", 22);
+      });
+    }
   });
 
   form.addEventListener("reset", function () {
