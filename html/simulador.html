@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="sem-js">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-language" content="pt-br">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Eraldo Xavier Pimentel Netto">
+    <meta name="keywords" content="simulador, roleta europeia, martingale, probabilidade, apostas">
+    <meta name="description" content="Simulador de roleta europeia com dinheiro fictício, três estratégias e comparação com a perda esperada.">
+    <meta name="theme-color" content="#0f2b24">
+    <title>Simulador de roleta | A casa sempre ganha</title>
+    <link rel="icon" type="image/png" href="../img/icone.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,700;1,400&amp;family=Big+Shoulders+Display:wght@700;800&amp;display=swap">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/componentes.css">
+  </head>
+  <body>
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+    <div class="moldura">
+      <header class="lateral">
+        <a class="marca" href="../index.html">A casa<br>sempre ganha</a>
+        <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav id="menu" class="menu" aria-label="Todas as páginas">
+      <ol class="menu-capitulos">
+      <li><span class="menu-capitulo">Abertura</span><ul><li><a href="../index.html">Início</a></li></ul></li>
+      <li><span class="menu-capitulo">Por que prende</span><ul><li><a href="mecanismos.html">Os três mecanismos</a></li><li><a href="mecanismo-quase-ganhou.html">O quase ganhou</a></li><li><a href="mecanismo-reforco-variavel.html">Reforço variável</a></li><li><a href="mecanismo-ilusao-controle.html">Ilusão de controle</a></li></ul></li>
+      <li><span class="menu-capitulo">Experimente</span><ul><li><a href="simulador.html" aria-current="page">Simulador de roleta</a></li></ul></li>
+      <li><span class="menu-capitulo">Quanto custa</span><ul><li><a href="numeros.html">Calculadora de gasto</a></li></ul></li>
+      <li><span class="menu-capitulo">E agora</span><ul><li><a href="ajuda.html">Plano de limites e apoio</a></li></ul></li>
+      </ol>
+      <p class="menu-consulta">Consulta</p>
+      <ul><li><a href="glossario.html">Glossário</a></li><li><a href="fontes.html">Fontes</a></li><li><a href="sobre.html">Sobre o projeto</a></li></ul>
+      </nav>
+        <p class="saldo-lateral" hidden>Seu saldo no simulador: <strong>R$ 0,00</strong></p>
+      </header>
+
+      <main id="conteudo" class="conteudo">
+      <ol class="trilha">
+        <li class="feito"><a href="../index.html">1<span class="trilha-nome">. Abertura</span></a></li>
+        <li class="feito"><a href="mecanismos.html">2<span class="trilha-nome">. Por que prende</span></a></li>
+        <li class="atual"><a href="simulador.html" aria-current="step">3<span class="trilha-nome">. Experimente</span></a></li>
+        <li><a href="numeros.html">4<span class="trilha-nome">. Quanto custa</span></a></li>
+        <li><a href="ajuda.html">5<span class="trilha-nome">. E agora</span></a></li>
+      </ol>
+
+      <header class="abertura-pagina">
+        <h1>Simulador de roleta</h1>
+        <p class="chamada">Dinheiro de mentira, matemática de verdade. Escolha quanto tem, quanto aposta e qual estratégia usar. Depois compare o resultado com o que a matemática previa.</p>
+      </header>
+
+      <section class="largo" aria-label="Mesa da roleta">
+        <div class="faixa" id="faixa-simulador"></div>
+        <p class="faixa-legenda" id="legenda-simulador" aria-live="polite">Gire uma vez para ver cada rodada, ou configure abaixo e jogue todas de uma vez.</p>
+        <div class="acoes">
+          <button class="botao" type="button" id="girar-uma">Girar uma vez</button>
+        </div>
+      </section>
+
+      <form id="form-simulador" novalidate>
+        <input type="hidden" name="versao" value="roleta-europeia-37-casas">
+
+        <fieldset>
+          <legend>Seu dinheiro</legend>
+          <div class="campos-lado">
+            <div class="campo">
+              <label for="saldo-inicial">Saldo inicial (R$)</label>
+              <input type="number" id="saldo-inicial" name="saldo-inicial" min="10" max="10000" step="10" value="500" required placeholder="Ex.: 500">
+            </div>
+            <div class="campo">
+              <label for="rodadas">Quantas rodadas</label>
+              <input type="number" id="rodadas" name="rodadas" min="1" max="500" value="100" required placeholder="Ex.: 100">
+              <small>Uma noite de cassino online passa fácil de 300 rodadas.</small>
+            </div>
+          </div>
+          <div class="campo">
+            <label for="valor-aposta">Valor de cada aposta: <span class="valor-ao-vivo" id="mostra-valor">R$ 10,00</span></label>
+            <input type="range" id="valor-aposta" name="valor-aposta" min="1" max="100" step="1" value="10" list="valores-comuns">
+            <datalist id="valores-comuns">
+              <option value="5"></option>
+              <option value="10"></option>
+              <option value="20"></option>
+              <option value="50"></option>
+              <option value="100"></option>
+            </datalist>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Sua aposta</legend>
+          <ul class="opcoes">
+            <li>
+              <input type="radio" id="tipo-cor" name="tipo" value="cor" checked>
+              <label for="tipo-cor">No vermelho</label>
+              <small>Ganha em 18 de 37 casas e recebe o dobro do que apostou.</small>
+            </li>
+            <li>
+              <input type="radio" id="tipo-numero" name="tipo" value="numero">
+              <label for="tipo-numero">Num número só</label>
+              <small>Ganha em 1 de 37 casas e recebe 36 vezes o que apostou.</small>
+            </li>
+          </ul>
+          <div class="campo">
+            <label for="numero-escolhido">Número escolhido (de 0 a 36)</label>
+            <input type="number" id="numero-escolhido" name="numero-escolhido" min="0" max="36" value="17" required placeholder="Ex.: 17">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Sua estratégia</legend>
+          <ul class="opcoes">
+            <li>
+              <input type="radio" id="estrategia-fixa" name="estrategia" value="fixa" checked>
+              <label for="estrategia-fixa">Aposta fixa</label>
+              <small>Sempre o mesmo valor, sempre na mesma escolha.</small>
+            </li>
+            <li>
+              <input type="radio" id="estrategia-dobrar" name="estrategia" value="dobrar">
+              <label for="estrategia-dobrar">Dobrar depois de perder</label>
+              <small>Conhecida como martingale. Volta ao valor inicial depois de cada vitória.</small>
+            </li>
+            <li>
+              <input type="radio" id="estrategia-seguir" name="estrategia" value="seguir">
+              <label for="estrategia-seguir">Seguir o resultado anterior</label>
+              <small>Aposta na cor ou no número que acabou de sair.</small>
+            </li>
+          </ul>
+        </fieldset>
+
+        <p class="erro-campo" id="erro-simulador" role="alert"></p>
+
+        <div class="acoes">
+          <input class="botao" type="submit" value="Jogar todas as rodadas">
+          <input class="botao botao-secundario" type="reset" value="Recomeçar">
+        </div>
+      </form>
+
+      <section class="resultado" id="resultado-simulador" hidden aria-live="polite">
+        <h2>Resultado</h2>
+        <p class="texto-suave">Saldo final</p>
+        <span class="numero-grande" id="saldo-final">R$ 0,00</span>
+        <p>
+          <label for="barra-saldo" class="texto-suave">Saldo comparado ao inicial (a barra cheia é o dobro do que você tinha)</label><br>
+          <progress id="barra-saldo" max="100" value="50"></progress>
+        </p>
+        <p class="aviso" id="res-quebrou" hidden></p>
+        <ul class="resumo">
+          <li>Rodadas jogadas<strong id="res-rodadas">0</strong></li>
+          <li>Total apostado<strong id="res-apostado">R$ 0,00</strong></li>
+          <li>Seu resultado<strong id="res-resultado">R$ 0,00</strong></li>
+          <li>Perda esperada pela matemática<strong id="res-esperado">R$ 0,00</strong></li>
+          <li>Vitórias<strong id="res-vitorias">0</strong></li>
+          <li>Quases<strong id="res-quases">0</strong></li>
+        </ul>
+        <p class="fonte-dado">A perda esperada é 1/37 (2,7%) de tudo o que foi apostado. Numa sessão curta, a sorte pode ficar acima ou abaixo dela. Em muitas rodadas, o resultado sempre se aproxima dela.</p>
+      </section>
+
+      <section class="largo" aria-labelledby="titulo-rodadas">
+        <h2 id="titulo-rodadas">Rodada por rodada</h2>
+        <p>
+          <input type="checkbox" id="so-destaques" name="so-destaques">
+          <label for="so-destaques">Mostrar só as vitórias e os quases</label>
+        </p>
+        <div class="tabela-rolagem alta">
+          <table border="1">
+            <caption>Cada linha é um giro da roleta. As linhas verdes são vitórias e as douradas são quases.</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="num">Rodada</th>
+                <th scope="col">Aposta em</th>
+                <th scope="col" class="num">Valor</th>
+                <th scope="col">Casa sorteada</th>
+                <th scope="col">Resultado</th>
+                <th scope="col" class="num">Saldo</th>
+              </tr>
+            </thead>
+            <tbody id="corpo-rodadas">
+              <tr>
+                <td colspan="6">Jogue as rodadas para preencher a tabela.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <aside class="aviso">
+        <p>O seu último saldo fica salvo neste navegador e aparece no menu em todas as páginas. Ele é a ponte para o próximo capítulo: <a href="numeros.html">quanto isso custa na vida real</a>.</p>
+      </aside>
+
+      <nav class="proxima" aria-label="Próxima página">
+        <p>Próxima página</p>
+        <a href="numeros.html">Quanto isso já custou</a>
+      </nav>
+      </main>
+
+      <footer class="rodape">
+        <p>Projeto final de Desenvolvimento Front-End para Web, UNIPÊ, 2026.<br>Eraldo Xavier Pimentel Netto.</p>
+        <p><small>Nenhum dinheiro de verdade é usado neste site e nada do que você digita sai do seu navegador. Se apostar deixou de ser diversão, ligue <a href="tel:188">188</a> (CVV) ou veja a página <a href="ajuda.html">E agora</a>.</small></p>
+      </footer>
+    </div>
+    <script src="../js/estado.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/roleta.js"></script>
+    <script src="../js/simulador.js"></script>
+  </body>
+</html>
