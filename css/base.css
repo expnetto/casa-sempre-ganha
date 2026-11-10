@@ -16,6 +16,16 @@
   --fonte-texto: "Schibsted Grotesk", system-ui, sans-serif;
   --leitura: 42rem;
   --largo: 64rem;
+  --painel: rgba(10, 31, 26, 0.6);
+  --lateral-fundo: rgba(15, 43, 36, 0.78);
+  --lateral-fundo-2: rgba(10, 32, 27, 0.6);
+  --campo-fundo: rgba(0, 0, 0, 0.22);
+  --esquema: dark;
+  --tinta-leve: rgba(239, 232, 216, 0.06);
+  --linha-forte: rgba(239, 232, 216, 0.3);
+  --forte: #fff8ea;
+  --brilho: rgba(255, 236, 190, 0.08);
+  --texto-botao: #0f2b24;
   --raio: 6px;
   --saida: 180ms;
   --curva-saida: cubic-bezier(0.4, 0, 1, 1);
@@ -37,7 +47,7 @@ html {
 body {
   margin: 0;
   background-color: var(--feltro);
-  background-image: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 236, 190, 0.08), transparent 70%);
+  background-image: radial-gradient(ellipse 80% 50% at 50% -10%, var(--brilho), transparent 70%);
   background-attachment: fixed;
   color: var(--giz);
   font-family: var(--fonte-texto);
@@ -126,7 +136,7 @@ hr {
 strong,
 b {
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--forte);
 }
 
 em {

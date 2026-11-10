@@ -33,9 +33,9 @@
   } catch (erro) {}
 
   const estado = Estado.ler();
-  if (estado.cor) {
-    raiz.style.setProperty("--destaque", estado.cor);
-    raiz.style.setProperty("--destaque-fundo", estado.cor + "24");
+  if (estado.cor && document.body.dataset.tema === "fora") {
+    document.body.style.setProperty("--destaque", estado.cor);
+    document.body.style.setProperty("--destaque-fundo", estado.cor + "24");
   }
 
   const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -55,7 +55,14 @@
     try {
       sessionStorage.setItem("csg-anterior", String(aqui));
     } catch (erro) {}
-    raiz.classList.add(destino < aqui ? "saindo-tras" : "saindo-frente");
+    const direcao = destino < aqui ? "tras" : "frente";
+    if (typeof Cassino !== "undefined" && Cassino.animar) {
+      Cassino.fecharCortina(ORDEM[destino], direcao).then(function () {
+        location.href = link.href;
+      });
+      return;
+    }
+    raiz.classList.add(direcao === "tras" ? "saindo-tras" : "saindo-frente");
     setTimeout(function () {
       location.href = link.href;
     }, tempoSaida);
