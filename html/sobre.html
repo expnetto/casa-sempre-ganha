@@ -76,6 +76,33 @@
         <p>Sem a biblioteca de animação, a troca de página volta a ser um deslizamento feito só com CSS. Sem JavaScript, os links funcionam normalmente. Quem configurou o sistema para reduzir movimento recebe só um esmaecimento.</p>
       </section>
 
+      <section class="mapa-site" aria-labelledby="titulo-mapa">
+        <h2 id="titulo-mapa">Mapa do site</h2>
+        <p>As 11 páginas formam uma jornada em cinco capítulos, mais três páginas de consulta. Os títulos abaixo seguem a mesma hierarquia: capítulo, página, subpágina e o jogo de cada uma.</p>
+        <h3>1. Abertura</h3>
+        <h4><a href="../index.html">Início</a></h4>
+        <p>Lobby do cassino, com a roleta jogável.</p>
+        <h3>2. Por que prende</h3>
+        <h4><a href="mecanismos.html">Os três mecanismos</a></h4>
+        <p>A página de entrada do capítulo, com uma carta para cada mecanismo.</p>
+        <h5><a href="mecanismo-quase-ganhou.html">O quase ganhou</a></h5>
+        <h6>Jogo: caça-níquel viciada em quases</h6>
+        <h5><a href="mecanismo-reforco-variavel.html">Reforço variável</a></h5>
+        <h6>Jogo: multiplicador (crash)</h6>
+        <h5><a href="mecanismo-ilusao-controle.html">Ilusão de controle</a></h5>
+        <h6>Jogo: placar de apostas esportivas</h6>
+        <h3>3. Experimente</h3>
+        <h4><a href="simulador.html">Simulador de roleta</a></h4>
+        <h3>4. Quanto custa</h3>
+        <h4><a href="numeros.html">Calculadora de gasto</a></h4>
+        <h3>5. E agora</h3>
+        <h4><a href="ajuda.html">Seu extrato e apoio</a></h4>
+        <h3>Consulta</h3>
+        <h4><a href="glossario.html">Glossário</a></h4>
+        <h4><a href="fontes.html">Fontes</a></h4>
+        <h4><a href="sobre.html">Sobre o projeto</a></h4>
+      </section>
+
       <section aria-labelledby="titulo-bibliotecas">
         <h2 id="titulo-bibliotecas">As bibliotecas e o que cada uma faz</h2>
         <p>A base do site é HTML, CSS e JavaScript escritos à mão. Por cima dela, duas bibliotecas, o GSAP (com três plugins) e o Lenis, carregadas por <abbr title="Content Delivery Network, rede de distribuição de conteúdo">CDN</abbr>:</p>
@@ -104,13 +131,13 @@
             <tbody>
               <tr>
                 <th scope="row">Todas</th>
-                <td>header, nav, main, section, article, aside, footer, meta charset, content-language, author, keywords, description, viewport, br, hr</td>
+                <td>header, nav, main e footer em todas; section, article e aside onde organizam o conteúdo; meta charset, content-language, author, keywords, description, viewport, br, hr</td>
                 <td>4 arquivos CSS externos, variáveis CSS por tema, Google Fonts, :hover no menu, tela de carregamento entre páginas, letreiro de LED, cursor do jogo da página</td>
               </tr>
               <tr>
                 <th scope="row"><a href="../index.html">Início</a></th>
-                <td>h1, figure, figcaption, img, ul, button</td>
-                <td>Lobby: roleta gigante girando, holofotes, lâmpadas e fichas que seguem o mouse</td>
+                <td>h1, figure, figcaption, img, ul, button, form, input password (o saque que pede senha), aside</td>
+                <td>Lobby: roleta gigante girando, holofotes, lâmpadas, fichas que seguem o mouse e o saque que nunca sai</td>
               </tr>
               <tr>
                 <th scope="row"><a href="mecanismos.html">Por que prende</a></th>
@@ -119,7 +146,7 @@
               </tr>
               <tr>
                 <th scope="row"><a href="mecanismo-quase-ganhou.html">O quase ganhou</a></th>
-                <td>audio com source (o som da máquina), details, summary, em, strong, checkbox do som</td>
+                <td>audio com controls e source (o som da máquina), details, summary, em, strong, checkbox do som</td>
                 <td>Caça-níquel jogável, programada para mostrar quases com mais frequência que o acaso, com o som sincronizado ao último rolo</td>
               </tr>
               <tr>
@@ -134,8 +161,8 @@
               </tr>
               <tr>
                 <th scope="row"><a href="simulador.html">Simulador</a></th>
-                <td>form, fieldset, legend, label, input range, number, radio, checkbox, hidden, submit, reset, button, datalist, table, progress, video com controls, muted e poster dentro de details</td>
-                <td>Roleta: Math.random, laço de rodadas, tabela montada pelo JavaScript, lâmpadas que apagam com o saldo e um vídeo tutorial de 30 segundos</td>
+                <td>form, fieldset, legend, label, input range, number, radio, checkbox, hidden, color, submit, reset, button, datalist, table, progress, video com controls, autoplay, loop, muted e poster dentro de details</td>
+                <td>Roleta: Math.random, laço de rodadas, tabela montada pelo JavaScript, lâmpadas que apagam com o saldo, um vídeo tutorial de 30 segundos e a cor da ficha guardada numa variável CSS</td>
               </tr>
               <tr>
                 <th scope="row"><a href="numeros.html">Quanto custa</a></th>
@@ -144,18 +171,23 @@
               </tr>
               <tr>
                 <th scope="row"><a href="ajuda.html">E agora</a></th>
-                <td>table do comprovante com tfoot, textarea com o extrato em texto, fieldset e radio do autoteste, progress, link tel:</td>
-                <td>Fora do jogo: página clara e sem efeitos; o extrato soma o que foi jogado nas outras páginas, e o autoteste é montado pelo JavaScript</td>
+                <td>table do comprovante com tfoot, textarea com o extrato em texto, input button, fieldset e radio do autoteste, progress, link tel:</td>
+                <td>Fora do jogo: página clara e sem efeitos; o extrato soma o que foi jogado nas outras páginas e o autoteste é montado pelo JavaScript</td>
               </tr>
               <tr>
                 <th scope="row"><a href="glossario.html">Glossário</a></th>
-                <td>details, summary, abbr, b, i, u, big, small, del, ins</td>
-                <td>Bingo: cada termo é uma bola numerada com contador CSS</td>
+                <td>details, summary, abbr, b, i, u, big, small, del, ins, form com input text (busca de termos)</td>
+                <td>Bingo: cada termo é uma bola numerada com contador CSS; a busca esconde os termos que não batem, ignorando acentos</td>
               </tr>
               <tr>
                 <th scope="row"><a href="fontes.html">Fontes</a></th>
-                <td>ol com start, cite, links externos com target</td>
+                <td>ol com start, cite, links externos com target, form com input email (receber novidades)</td>
                 <td>Dados: números das referências em forma de dado e dados 3D girando ao fundo</td>
+              </tr>
+              <tr>
+                <th scope="row"><a href="sobre.html">Sobre</a></th>
+                <td>h3, h4, h5 e h6 no mapa do site, table com caption e border, details</td>
+                <td>Bastidores: mira no lugar do cursor</td>
               </tr>
             </tbody>
           </table>
@@ -178,7 +210,7 @@
         </details>
         <details>
           <summary>Como os dados ficam salvos</summary>
-          <p>Os resultados dos jogos e o total da calculadora ficam numa única chave do localStorage, chamada <b>csg</b>. Toda leitura e escrita passa pelo arquivo <b>js/estado.js</b>, que trata o caso de o navegador bloquear o salvamento, como no modo privado.</p>
+          <p>Os resultados dos jogos, o total da calculadora, e a cor da ficha ficam numa única chave do localStorage, chamada <b>csg</b>. Toda leitura e escrita passa pelo arquivo <b>js/estado.js</b>, que trata o caso de o navegador bloquear o salvamento, como no modo privado.</p>
         </details>
         <details>
           <summary>Como a roleta funciona</summary>

@@ -74,13 +74,15 @@
               <input type="checkbox" id="som-maquina" name="som-maquina" checked>
               <label for="som-maquina">Som</label>
             </p>
-            <audio id="som-quase" preload="auto">
-              <source src="../audio/quase-acerto.mp3" type="audio/mpeg">
-              <source src="../audio/quase-acerto.ogg" type="audio/ogg">
-            </audio>
           </div>
           <p class="placar-maquina" id="placar-maquina">Créditos: 20. Giros: 0. Quases: 0. Vitórias: 0.</p>
         </div>
+        <p class="texto-suave"><small>O som que a máquina toca no quase, para ouvir sozinho:</small></p>
+        <audio id="som-quase" controls preload="auto">
+          <source src="../audio/quase-acerto.mp3" type="audio/mpeg">
+          <source src="../audio/quase-acerto.ogg" type="audio/ogg">
+          Seu navegador não toca áudio. <a href="../audio/quase-acerto.mp3">Baixe o som</a>.
+        </audio>
         <aside class="revelacao" id="revelacao" hidden aria-live="polite"></aside>
       </section>
 
