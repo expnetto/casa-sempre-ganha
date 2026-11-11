@@ -25,6 +25,7 @@
     <div class="preloader" aria-hidden="true"><div class="maquina-entrada"><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div><div class="rolo-entrada"><div class="fita-entrada"></div></div></div><button class="preloader-pular" type="button" tabindex="-1">Pular</button></div>
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
     <div class="moldura">
+      <!-- barra lateral com o logo e o menu -->
       <header class="lateral">
         <a class="marca" href="../index.html">A casa<br>sempre ganha</a>
         <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
@@ -42,6 +43,7 @@
         <p class="saldo-lateral" hidden>Seu saldo no simulador: <strong>R$ 0,00</strong></p>
       </header>
 
+      <!-- conteudo da pagina -->
       <main id="conteudo" class="conteudo">
       <ol class="trilha">
         <li class="feito"><a href="../index.html">1<span class="trilha-nome">. Abertura</span></a></li>
@@ -111,21 +113,25 @@
         <a class="topo" href="#topo">Voltar ao topo</a>
       </article>
 
+      <!-- link pra proxima pagina -->
       <nav class="proxima" aria-label="Próxima página">
         <p>Próxima página</p>
         <a href="mecanismo-reforco-variavel.html">O prêmio que pode vir a qualquer hora</a>
       </nav>
       </main>
 
+      <!-- rodape -->
       <footer class="rodape">
         <p>Projeto final de Desenvolvimento Front-End para Web, UNIPÊ, 2026.<br>Eraldo Xavier Pimentel Netto.</p>
         <p><small>Nenhum dinheiro de verdade é usado neste site e nada do que você digita sai do seu navegador. Se apostar deixou de ser diversão, ligue <a href="tel:188">188</a> (CVV) ou veja a página <a href="ajuda.html">E agora</a>.</small></p>
       </footer>
     </div>
+    <!-- bibliotecas: gsap e lenis -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+    <!-- meus scripts -->
     <script src="../js/estado.js"></script>
     <script src="../js/nav.js"></script>
     <script src="../js/efeitos.js"></script>
