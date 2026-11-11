@@ -242,6 +242,19 @@
     if (sessao) desenharTabela();
   });
 
+  const campoCor = document.getElementById("cor-ficha");
+  campoCor.value = Estado.ler().cor || campoCor.value;
+  campoCor.addEventListener("input", function () {
+    Estado.aplicarCor(campoCor.value);
+  });
+  campoCor.addEventListener("change", function () {
+    Estado.gravar("cor", campoCor.value);
+    if (typeof Cassino !== "undefined") Cassino.chuva("ficha", 6);
+  });
+  form.addEventListener("reset", function () {
+    setTimeout(function () { campoCor.value = Estado.ler().cor || campoCor.defaultValue; });
+  });
+
   mostraValor.textContent = formatarReais(Number(campoValor.value));
   mostrarNumero(form.querySelector('input[name="tipo"]:checked').value === "numero");
 })();

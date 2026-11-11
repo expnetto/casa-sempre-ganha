@@ -58,13 +58,13 @@
       <details class="tutorial">
         <summary>Ver como usar, em 30 segundos</summary>
         <div class="video-moldura">
-          <video controls muted playsinline preload="none" width="1280" height="720" poster="../img/poster-simulador.jpg">
+          <video controls autoplay loop muted playsinline width="1280" height="720" poster="../img/poster-simulador.jpg">
             <source src="../video/simulador.mp4" type="video/mp4">
             <source src="../video/simulador.webm" type="video/webm">
             Seu navegador não toca vídeo. <a href="../video/simulador.mp4">Baixe o vídeo</a>.
           </video>
         </div>
-        <p><small>Gravação de tela do próprio simulador.</small></p>
+        <p><small>Gravação de tela do próprio simulador. Toca sozinho, sem som e em repetição, como um GIF.</small></p>
       </details>
 
       <section class="largo" aria-label="Mesa da roleta">
@@ -142,6 +142,16 @@
               <small>Aposta na cor ou no número da rodada anterior.</small>
             </li>
           </ul>
+        </fieldset>
+
+        <fieldset>
+          <legend>4. Sua ficha</legend>
+          <div class="campo campo-ficha">
+            <label for="cor-ficha">Cor da sua ficha</label>
+            <input type="color" id="cor-ficha" name="cor-ficha" value="#c23b2e">
+            <span class="ficha ficha-amostra" aria-hidden="true"></span>
+            <small>São as fichas que caem quando você ganha, aqui e na roleta da abertura, e o cursor do lobby. A cor fica salva para a próxima visita. Deixar o jogador personalizar a mesa ou a ficha é técnica de engajamento: o jogo passa a parecer seu.</small>
+          </div>
         </fieldset>
 
         <p class="erro-campo" id="erro-simulador" role="alert"></p>

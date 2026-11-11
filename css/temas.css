@@ -660,8 +660,8 @@ html.com-cursor input[type="color"] {
 .peca-ficha,
 .ficha {
   background:
-    radial-gradient(circle, var(--c, #c23b2e) 0 46%, #f4ecd8 46% 50%, transparent 50%),
-    repeating-conic-gradient(var(--c, #c23b2e) 0 22.5deg, #f4ecd8 22.5deg 45deg);
+    radial-gradient(circle, var(--c, var(--ficha, #c23b2e)) 0 46%, #f4ecd8 46% 50%, transparent 50%),
+    repeating-conic-gradient(var(--c, var(--ficha, #c23b2e)) 0 22.5deg, #f4ecd8 22.5deg 45deg);
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25), 0 6px 14px rgba(0, 0, 0, 0.35);
   border-radius: 50%;
 }
@@ -1007,6 +1007,12 @@ html.primeira-visita .preloader {
   height: 3.4rem;
   z-index: -1;
 }
+
+.fichas-hero .ficha:nth-child(1) { --c: #c23b2e; left: 62%; top: 4%; }
+.fichas-hero .ficha:nth-child(2) { --c: #1d1d1d; left: 88%; top: 58%; }
+.fichas-hero .ficha:nth-child(3) { --c: #e0a93b; left: 46%; top: 70%; }
+.fichas-hero .ficha:nth-child(4) { --c: #2f8a5b; left: 74%; top: 88%; }
+.fichas-hero .ficha:nth-child(5) { --c: #7048e8; left: 96%; top: 18%; }
 
 [data-tema="lobby"] .ferramentas {
   display: grid;
@@ -1399,6 +1405,10 @@ html.primeira-visita .preloader {
   margin: 0;
 }
 
+.legenda-saldos li:nth-child(1) { --c: #ffffff; }
+.legenda-saldos li:nth-child(2) { --c: #ff5c5c; }
+.legenda-saldos li:nth-child(3) { --c: #ffd400; }
+
 .legenda-saldos li::before {
   content: "";
   display: inline-block;
@@ -1438,6 +1448,10 @@ html.primeira-visita .preloader {
   box-shadow: inset -12px -16px 26px rgba(0, 0, 0, 0.22), 0 14px 26px rgba(0, 0, 0, 0.15);
   margin-bottom: 0.75rem;
 }
+
+.bolas-numeros li:nth-child(1) .bola-loteria { --c: #2450c7; }
+.bolas-numeros li:nth-child(2) .bola-loteria { --c: #f2a900; }
+.bolas-numeros li:nth-child(3) .bola-loteria { --c: #d6336c; }
 
 .bola-loteria strong {
   display: flex;
@@ -1885,6 +1899,18 @@ html.cortina-fechada .cortina {
   margin-bottom: 0;
 }
 
+.saque {
+  margin-top: 1rem;
+}
+
+.ficha-amostra {
+  display: inline-block;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 0.75rem;
+  vertical-align: middle;
+}
+
 .frase-resultado {
   font-size: 1.25rem;
   line-height: 1.45;
@@ -1902,4 +1928,22 @@ html.cortina-fechada .cortina {
 .copiar-extrato textarea {
   font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
   font-size: 0.85rem;
+}
+
+.mapa-site h4,
+.mapa-site h5,
+.mapa-site h6 {
+  margin-top: 0.8em;
+}
+
+.mapa-site h5 {
+  padding-left: 1.5rem;
+}
+
+.mapa-site h6 {
+  padding-left: 3rem;
+}
+
+#ok-novidades {
+  margin-top: 1rem;
 }

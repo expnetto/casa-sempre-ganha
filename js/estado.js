@@ -2,7 +2,7 @@ const Estado = (function () {
   const CHAVE = "csg";
 
   function padrao() {
-    return { simulador: null, limites: null, cor: null };
+    return { simulador: null, cor: null };
   }
 
   function ler() {
@@ -24,7 +24,13 @@ const Estado = (function () {
     }
   }
 
-  return { ler: ler, gravar: gravar };
+  function aplicarCor(cor) {
+    if (/^#[0-9a-f]{6}$/i.test(cor)) document.documentElement.style.setProperty("--ficha", cor);
+  }
+
+  aplicarCor(ler().cor);
+
+  return { ler: ler, gravar: gravar, aplicarCor: aplicarCor };
 })();
 
 function formatarReais(valor) {

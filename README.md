@@ -9,7 +9,7 @@ Autor: Eraldo Xavier Pimentel Netto.
 
 Um site que mostra, na prática, **por que as apostas online prendem**. Em vez de sermão, a pessoa
 experimenta os mecanismos numa roleta com dinheiro de mentira, faz a conta com os próprios números
-e sai com um plano de limites salvo no navegador.
+e sai com um extrato de tudo o que jogou.
 
 - **Problema:** as bets cresceram muito rápido no Brasil, e o material de conscientização costuma ser
   técnico demais ou só proibir.
@@ -23,17 +23,17 @@ e sai com um plano de limites salvo no navegador.
 
 | Capítulo | Página | Jogo | O que tem |
 |---|---|---|---|
-| 1. Abertura | `index.html` | Lobby | Roleta jogável, holofotes e lâmpadas |
+| 1. Abertura | `index.html` | Lobby | Roleta jogável, holofotes, lâmpadas e um saque que pede uma senha que você nunca criou |
 | 2. Por que prende | `html/mecanismos.html` | Pôquer | Os três mecanismos como cartas que correm de lado |
 | | `html/mecanismo-quase-ganhou.html` | Caça-níquel | Caça-níquel jogável e viciada em quases, com o som sincronizado ao último rolo |
 | | `html/mecanismo-reforco-variavel.html` | Multiplicador | Jogo de crash em canvas |
 | | `html/mecanismo-ilusao-controle.html` | Apostas esportivas | Placar de odds ao vivo e gráfico de saldos desenhado |
-| 3. Experimente | `html/simulador.html` | Roleta | Simulador em três passos, vídeo tutorial e lâmpadas que apagam com o saldo |
+| 3. Experimente | `html/simulador.html` | Roleta | Simulador em três passos, cor da ficha escolhida pela pessoa, vídeo tutorial e lâmpadas que apagam com o saldo |
 | 4. Quanto custa | `html/numeros.html` | Loteria | Contadores em bolas; calculadora com data de início e jogo preferido, total revelado numa raspadinha |
 | 5. E agora | `html/ajuda.html` | Fora do jogo | Comprovante com tudo o que foi jogado no site, autoteste PGSI e canais de apoio, sem efeitos |
-| Consulta | `html/glossario.html` | Bingo | Termos como bolas de bingo |
-| | `html/fontes.html` | Dados | Referências com data de consulta |
-| | `html/sobre.html` | Bastidores | Decisões técnicas e tags usadas em cada página |
+| Consulta | `html/glossario.html` | Bingo | Termos como bolas de bingo, com busca |
+| | `html/fontes.html` | Dados | Referências com data de consulta e inscrição para novidades |
+| | `html/sobre.html` | Bastidores | Mapa do site, decisões técnicas e tags usadas em cada página |
 
 ## Destaque da mudança de páginas
 
@@ -47,8 +47,8 @@ e sai com um plano de limites salvo no navegador.
 
 ## Tecnologias
 
-- HTML semântico (`header`, `nav`, `main`, `section`, `article`, `aside`, `footer`) em todas as páginas,
-  com as meta tags `charset`, `content-language`, `author`, `keywords`, `description` e `viewport`.
+- HTML semântico em todas as páginas: `header`, `nav`, `main` e `footer` sempre, e `section`, `article` e `aside` onde
+  organizam o conteúdo, com as meta tags `charset`, `content-language`, `author`, `keywords`, `description` e `viewport`.
 - CSS externo em quatro arquivos (`css/base.css`, `css/layout.css`, `css/componentes.css`,
   `css/temas.css`), com variáveis no `:root` redefinidas por tema (`body data-tema="..."`) e Google Fonts.
 - JavaScript próprio, sem framework e sem build, com duas bibliotecas por CDN (o GSAP, com três plugins, e o Lenis):
@@ -67,7 +67,7 @@ index.html
 html/      as outras 10 páginas
 css/       base.css, layout.css, componentes.css, temas.css
 js/        inicio.js, estado.js, nav.js, efeitos.js, cenas.js, roleta.js,
-           abertura.js, simulador.js, calculadora.js, extrato.js
+           abertura.js, simulador.js, calculadora.js, extrato.js, consulta.js
 img/       imagens e pôster do vídeo
 audio/     som do quase acerto (mp3 e ogg)
 video/     gravação do simulador (mp4 e webm)

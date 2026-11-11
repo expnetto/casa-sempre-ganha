@@ -103,6 +103,22 @@
         <p>As imagens, o som do quase acerto e o vídeo do simulador foram produzidos para este projeto. Nenhuma mídia de terceiros foi copiada para o site. A reportagem da CBN é exibida por incorporação, direto do YouTube.</p>
       </section>
 
+      <section aria-labelledby="titulo-novidades">
+        <h2 id="titulo-novidades">Receba as novidades</h2>
+        <p>Os números das bets mudam a cada relatório do Banco Central e da Secretaria de Prêmios e Apostas. Deixe o seu e-mail para saber quando os dados deste site forem atualizados.</p>
+        <form id="form-novidades" novalidate>
+          <div class="campo">
+            <label for="email-novidades">Seu e-mail</label>
+            <input type="email" id="email-novidades" name="email-novidades" required autocomplete="email" placeholder="Ex.: nome@email.com">
+          </div>
+          <p class="erro-campo" id="erro-novidades" role="alert"></p>
+          <div class="acoes">
+            <button class="botao" type="submit">Quero receber</button>
+          </div>
+          <p id="ok-novidades" aria-live="polite"></p>
+        </form>
+      </section>
+
       <nav class="proxima" aria-label="Próxima página">
         <p>Próxima página</p>
         <a href="sobre.html">Sobre o projeto</a>
@@ -122,5 +138,6 @@
     <script src="../js/nav.js"></script>
     <script src="../js/efeitos.js"></script>
     <script src="../js/cenas.js"></script>
+    <script src="../js/consulta.js"></script>
   </body>
 </html>

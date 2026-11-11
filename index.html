@@ -56,11 +56,11 @@
           <div class="bola-orbita"><span></span></div>
         </div>
         <div class="fichas-hero" aria-hidden="true">
-          <span class="ficha" style="--c:#c23b2e; left:62%; top:4%"></span>
-          <span class="ficha" style="--c:#1d1d1d; left:88%; top:58%"></span>
-          <span class="ficha" style="--c:#e0a93b; left:46%; top:70%"></span>
-          <span class="ficha" style="--c:#2f8a5b; left:74%; top:88%"></span>
-          <span class="ficha" style="--c:#7048e8; left:96%; top:18%"></span>
+          <span class="ficha"></span>
+          <span class="ficha"></span>
+          <span class="ficha"></span>
+          <span class="ficha"></span>
+          <span class="ficha"></span>
         </div>
         <h1 id="titulo-abertura">A casa<br>sempre ganha</h1>
         <p class="chamada">Ninguém entra numa bet achando que vai perder. Este site mostra, com uma roleta de mentira e os seus próprios números, por que a conta nunca fecha para quem aposta.</p>
@@ -71,8 +71,25 @@
           <p class="faixa-legenda" id="legenda-abertura" aria-live="polite"></p>
           <div class="acoes">
             <button class="botao" id="girar-abertura" type="button" hidden>Girar a roleta</button>
+            <button class="botao botao-secundario" id="sacar-abertura" type="button" hidden>Sacar</button>
             <span class="placar" id="placar-abertura">Rodadas: 0. Saldo: R$ 100,00.</span>
           </div>
+          <form class="saque" id="form-saque" hidden novalidate>
+            <p>Para a sua segurança, digite a sua senha para sacar.</p>
+            <div class="campo">
+              <label for="senha-saque">Senha</label>
+              <input type="password" id="senha-saque" name="senha-saque" required autocomplete="off" placeholder="Sua senha">
+            </div>
+            <p class="erro-campo" id="erro-saque" role="alert"></p>
+            <div class="acoes">
+              <button class="botao" type="submit">Confirmar saque</button>
+            </div>
+          </form>
+          <aside class="revelacao" id="revelacao-saque" hidden aria-live="polite">
+            <h3>Que senha?</h3>
+            <p>Você nunca criou uma. Para girar, ninguém pediu nada: nem senha, nem confirmação. Para sacar, a casa pediu uma senha, recusou e ofereceu mais uma rodada.</p>
+            <p>É uma caricatura, mas o desenho é real. Nas bets, depositar costuma ser instantâneo, por Pix. Sacar passa por verificação, prazo e regras de bônus que prendem o saldo. Todo o atrito fica do lado de quem quer sair.</p>
+          </aside>
         </div>
       </section>
 

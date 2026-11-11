@@ -56,6 +56,14 @@
         <p class="chamada">As palavras que aparecem nas bets e neste site, explicadas sem rodeio. Clique em um termo para abrir a explicação.</p>
       </header>
 
+      <form class="busca-termos" id="form-busca" role="search" hidden>
+        <div class="campo">
+          <label for="busca-termo">Buscar um termo</label>
+          <input type="text" id="busca-termo" name="busca-termo" autocomplete="off" placeholder="Ex.: RTP, martingale, quase">
+          <small id="busca-resultado" aria-live="polite"></small>
+        </div>
+      </form>
+
       <section class="termos" aria-labelledby="titulo-jogo">
         <h2 id="titulo-jogo">Do jogo</h2>
 
@@ -174,5 +182,6 @@
     <script src="../js/nav.js"></script>
     <script src="../js/efeitos.js"></script>
     <script src="../js/cenas.js"></script>
+    <script src="../js/consulta.js"></script>
   </body>
 </html>

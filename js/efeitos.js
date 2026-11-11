@@ -452,7 +452,7 @@ const Cassino = (function () {
         peca.style.width = "34px";
         peca.style.height = "34px";
       }
-      peca.style.setProperty("--c", cores[i % cores.length]);
+      peca.style.setProperty("--c", (tipo === "ficha" && Estado.ler().cor) || cores[i % cores.length]);
       const x = aleatorio(0, innerWidth - 60);
       gsap.fromTo(peca, { x: x, y: -80, rotation: aleatorio(-180, 180) }, {
         x: x + aleatorio(-120, 120),
