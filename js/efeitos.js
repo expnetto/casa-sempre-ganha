@@ -287,7 +287,7 @@ const Cassino = (function () {
       }
       ultimoX = evento.clientX;
       const alvo = evento.target.closest("a, button, summary, label, select, input[type=submit], input[type=reset], input[type=radio], input[type=checkbox], input[type=range], input[type=color], canvas");
-      const texto = evento.target.closest("input[type=text], input[type=number], input[type=email], input[type=password], input[type=date], textarea");
+      const texto = evento.target.closest("input[type=text], input[type=number], input[type=email], input[type=date], textarea");
       cursor.classList.toggle("sobre-link", Boolean(alvo));
       cursor.classList.toggle("escondido", Boolean(texto));
     });
