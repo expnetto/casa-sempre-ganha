@@ -23,7 +23,7 @@ e sai com um extrato de tudo o que jogou.
 
 | Capítulo | Página | Jogo | O que tem |
 |---|---|---|---|
-| 1. Abertura | `index.html` | Lobby | Roleta jogável, holofotes, lâmpadas e um saque que pede uma senha que você nunca criou |
+| 1. Abertura | `index.html` | Lobby | Roleta jogável, holofotes e lâmpadas |
 | 2. Por que prende | `html/mecanismos.html` | Pôquer | Os três mecanismos como cartas que correm de lado |
 | | `html/mecanismo-quase-ganhou.html` | Caça-níquel | Caça-níquel jogável e viciada em quases, com o som sincronizado ao último rolo |
 | | `html/mecanismo-reforco-variavel.html` | Multiplicador | Jogo de crash em canvas |
