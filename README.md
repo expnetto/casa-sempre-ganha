@@ -21,19 +21,21 @@ e sai com um extrato de tudo o que jogou.
 
 ## Páginas
 
-| Capítulo | Página | Jogo | O que tem |
-|---|---|---|---|
-| 1. Abertura | `index.html` | Lobby | Roleta jogável, holofotes e lâmpadas |
-| 2. Por que prende | `html/mecanismos.html` | Pôquer | Os três mecanismos como cartas que correm de lado |
-| | `html/mecanismo-quase-ganhou.html` | Caça-níquel | Caça-níquel jogável e viciada em quases, com o som sincronizado ao último rolo |
-| | `html/mecanismo-reforco-variavel.html` | Multiplicador | Jogo de crash em canvas |
-| | `html/mecanismo-ilusao-controle.html` | Apostas esportivas | Placar de odds ao vivo e gráfico de saldos desenhado |
-| 3. Experimente | `html/simulador.html` | Roleta | Simulador em três passos, cor da ficha escolhida pela pessoa, vídeo tutorial e lâmpadas que apagam com o saldo |
-| 4. Quanto custa | `html/numeros.html` | Loteria | Contadores em bolas; calculadora com data de início e jogo preferido, total revelado numa raspadinha |
-| 5. E agora | `html/ajuda.html` | Fora do jogo | Comprovante com tudo o que foi jogado no site, autoteste PGSI e canais de apoio, sem efeitos |
-| Consulta | `html/glossario.html` | Bingo | Termos como bolas de bingo, com busca |
-| | `html/fontes.html` | Dados | Referências com data de consulta e inscrição para novidades |
-| | `html/sobre.html` | Bastidores | Mapa do site, decisões técnicas e tags usadas em cada página |
+São **11 páginas**: as 8 da jornada, divididas em 5 capítulos, e mais 3 de consulta.
+
+| # | Capítulo | Página | Jogo | O que tem |
+|---|---|---|---|---|
+| 1 | 1. Abertura | `index.html` | Lobby | Roleta jogável, holofotes e lâmpadas |
+| 2 | 2. Por que prende | `html/mecanismos.html` | Pôquer | Os três mecanismos como cartas que correm de lado |
+| 3 | | `html/mecanismo-quase-ganhou.html` | Caça-níquel | Caça-níquel jogável e viciada em quases, com o som sincronizado ao último rolo |
+| 4 | | `html/mecanismo-reforco-variavel.html` | Multiplicador | Jogo de crash em canvas |
+| 5 | | `html/mecanismo-ilusao-controle.html` | Apostas esportivas | Placar de odds ao vivo e gráfico de saldos desenhado |
+| 6 | 3. Experimente | `html/simulador.html` | Roleta | Simulador em três passos, cor da ficha escolhida pela pessoa, vídeo tutorial e lâmpadas que apagam com o saldo |
+| 7 | 4. Quanto custa | `html/numeros.html` | Loteria | Contadores em bolas; calculadora com data de início e jogo preferido, total revelado numa raspadinha |
+| 8 | 5. E agora | `html/ajuda.html` | Fora do jogo | Comprovante com tudo o que foi jogado no site, autoteste PGSI e canais de apoio, sem efeitos |
+| 9 | Consulta | `html/glossario.html` | Bingo | Termos como bolas de bingo, com busca |
+| 10 | | `html/fontes.html` | Dados | Referências com data de consulta e inscrição para novidades |
+| 11 | | `html/sobre.html` | Bastidores | Mapa do site, decisões técnicas e tags usadas em cada página |
 
 ## Destaque da mudança de páginas
 
